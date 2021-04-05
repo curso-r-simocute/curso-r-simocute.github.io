@@ -1,7 +1,7 @@
 name: "curso-r-simocute.github.io"
-title: "Curso sobre R - Simocute"
+title: "El lenguaje de programacion R"
 description: |
-  Curso sobre R - Simocute
+  Curso sobre el lenguaje de programación R. Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).
 output_dir: "docs"
 navbar:
   right:

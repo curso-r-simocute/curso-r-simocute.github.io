@@ -1,7 +1,7 @@
 ---
-title: "Curso sobre R - Simocute"
+title: "El lenguaje de programación R"
 description: |
-  Welcome to the website. I hope you enjoy it!
+  Curso sobre el lenguaje de programación R. Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).
 site: distill::distill_website
 ---
 
