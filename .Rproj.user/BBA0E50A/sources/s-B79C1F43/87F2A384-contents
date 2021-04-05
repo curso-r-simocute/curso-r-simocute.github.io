@@ -3,10 +3,11 @@ title: "El lenguaje de programacion R"
 description: |
   Curso sobre el lenguaje de programación R. Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute). 2021.
 output_dir: "docs"
+theme: theme.css
 navbar:
-  right:
-    - text: "Home"
-      href: index.html
-    - text: "About"
-      href: about.html
+  left:
+    - icon: fab fa-github
+      href: "https://github.com/curso-r-simocute"  
+    - icon: fab fa-youtube
+      href: "https://www.youtube.com/"        
 output: distill::distill_article

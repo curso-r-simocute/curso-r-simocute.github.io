@@ -16,3 +16,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+# Descripción
+Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación [R](https://www.r-project.org/). Es organizado por el [Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute)](https://simocute.go.cr/).
+
+# Contenidos
