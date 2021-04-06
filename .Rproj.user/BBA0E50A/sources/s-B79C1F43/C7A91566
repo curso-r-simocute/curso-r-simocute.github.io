@@ -3,7 +3,7 @@
     "path": "C:/Users/mfvargas/curso-r-simocute/curso-r-simocute.github.io/01-r-lenguaje.Rmd",
     "project_path": "01-r-lenguaje.Rmd",
     "type": "r_markdown",
-    "hash": "1064064838",
+    "hash": "43653850",
     "contents": "",
     "dirty": false,
     "created": 1617674845250.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "11,19",
-        "scrollLine": "3"
+        "cursorPosition": "8,34",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1617675215,
+    "lastKnownWriteTime": 1617676164,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1617675215721,
+    "last_content_update": 1617676164825,
     "read_only": false,
     "read_only_alternatives": []
 }
