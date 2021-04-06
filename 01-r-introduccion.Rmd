@@ -1,14 +1,16 @@
 ---
-title: "El lenguaje de programación R"
-description: |
-  Características generales del lenguaje R.
-output: distill::distill_article
+title: "Introducción a R"
+output: 
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Características generales
 [R](https://www.r-project.org/) es un lenguaje de programación enfocado en análisis estadístico. Es ampliamente utilizado en diversas áreas de investigación, entre las que pueden mencionarse [aprendizaje automático (_machine learning_)](https://en.wikipedia.org/wiki/Machine_learning), [ciencia de datos (_data science_)](https://en.wikipedia.org/wiki/Data_science) y [_big data_](https://en.wikipedia.org/wiki/Big_data), con aplicaciones en campos como biomedicina, bioinformática y finanzas, entre muchos otros. Fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, en 1993.
 
 Algunas de las principales características de este lenguaje son:
@@ -22,13 +24,28 @@ R es un proyecto de [software libre](https://en.wikipedia.org/wiki/Free_software
 
 Para programar en R, puede utilizarse una interfaz de línea de comandos y también ambientes de desarrollo integrados (IDE, _integrated development environment_) como [Jupyter](https://jupyter.org/) o [RStudio](https://rstudio.com/).
 
+# El ambiente de desarrollo RStudio
+[RStudio](https://www.rstudio.com/) es el IDE más popular para el lenguaje R. Está disponible en una versión de escritorio (RStudio Desktop) y en una versión para servidor (RStudio Server). Esta última permite la conexión de varios usuarios a través de un navegador web. RStudio se ofrece también como un servicio en la nube, a través de [RStudio Cloud](https://www.rstudio.com/products/cloud/). 
+
+<figure>
+  <img src="img/rstudio.png" />
+  <figcaption>
+    Interfaz de RStudio.
+  </figcaption>
+</figure>
+
+Además de edición de código fuente en R (y otros lenguajes), RStudio contiene capacidades para depurar código y visualizar datos en formatos tabulares, gráficos y de mapas.
+
+# El lenguaje R
 ## Funciones
 R, al igual que otros lenguajes de programación, estructura su funcionalidad en segmentos de [código fuente](https://en.wikipedia.org/wiki/Source_code) llamados [funciones](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions). Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático. Todas las funciones tienen un nombre y un conjunto de parámetros que especifican los datos de entrada que procesa la función. Los parámetros se escriben entre paréntesis redondos (```()```) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún parámetro. Si la función tiene varios parámetros, deben separarse mediante comas (```,```).
 
+### Ejemplos
 Por ejemplo, la función [print()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/print) recibe como parámetro un valor (ej. un texto o un número) para imprimirlo en la pantalla. En el siguiente fragmento de código en R, se utiliza ```print()``` para imprimir la hilera ["Hola mundo"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program). Nótese el uso del símbolo ```#``` para comentarios (i.e. texto que no es código ejecutable).
 
 ```{r collapse=TRUE}
 # Impresión de una hilera de carácteres
+
 print("Hola mundo")
 ```
 
@@ -43,6 +60,7 @@ La función [getwd()](https://www.rdocumentation.org/packages/base/versions/3.6.
 
 ```{r collapse=TRUE}
 # Impresión del directorio de trabajo
+
 getwd()
 ```
 
@@ -50,13 +68,16 @@ La función ```setwd()``` (_set working directory_) establece la ruta del direct
 
 ```{r eval=FALSE}
 # Definición del directorio de trabajo (la ruta debe existir)
+
 setwd("C:/Users/mfvargas")
 ```
 
+### Parámetros
 Los parámetros de las funciones tienen nombres que pueden especificarse en caso de ser necesario. En el siguiente ejemplo, se utilizan los nombres de los parámetros ```x```, ```xlab``` y ```ylab``` de la función [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot) para especificar la fuente de datos y las etiquetas de los ejes x e y de un gráfico.
 
 ```{r collapse=TRUE}
 # Gráfico con etiquetas en los ejes x e y del conjunto de datos "cars"
+
 plot(
   x=cars, 
   xlab="Velocidad", 
@@ -64,19 +85,23 @@ plot(
 )
 ```
 
+### Ayuda sobre funciones
 Para obtener ayuda de una función desde la línea de comandos de R, puede utilizarse un signo de pregunta (```?```) seguido del nombre de la función. Por ejemplo:
 
 ```{r eval=FALSE}
 # Ayuda de la función setwd()
+
 ?setwd
 ```
 
 También puede obtenerse ayuda sobre una función en los buscadores de Internet (ej. Google), además de ejemplos y otros materiales de apoyo. El sitio [R Documentation and manuals - R Documentation](https://www.rdocumentation.org/) reúne la documentación de las funciones de R.
 
+### Bibliotecas y paquetes
 Las funciones de R se agrupan en conjuntos llamados bibliotecas, las cuales se distribuyen en [paquetes](https://cran.r-project.org/web/packages/available_packages_by_name.html). Para utilizar un paquete, este debe cargarse (en la memoria del computador) primero con la función [library()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/library).
 
 ```{r}
 # Carga del paquete stats
+
 library(stats)
 ```
 
@@ -84,6 +109,7 @@ Algunos paquetes están contenidos en la distribución base de R y otros deben i
 
 ```{r eval=FALSE}
 # Instalación del paquete dplyr
+
 install.packages("dplyr")
 ```
 
@@ -266,24 +292,28 @@ paises[3]
 ```
 
 El operador ```:``` puede utilizarse para especificar un rango de índices:
+
 ```{r collapse=TRUE}
 # Elementos entre los índices 2 y 4 (2, 3 y 4)
 paises[2:4]
 ```
 
 Con la función ```c()```, es posible especificar un conjunto de índices específicos:
+
 ```{r collapse=TRUE}
 # Elementos entre los índices 1, 4 y 5
 paises[c(1, 4, 5)]
 ```
 
 Los números negativos pueden usarse para excluir índices:
+
 ```{r collapse=TRUE}
 # Exclusión de los índices 3 y 4
 paises[c(-3, -4)]
 ```
 
 Los valores lógicos ```TRUE``` y ```FALSE``` también pueden usarse para incluir y excluir índices de un vector:
+
 ```{r collapse=TRUE}
 # Se incluyen los índices 1, 2 y 4; y se excluyen los índices 3 y 5
 paises[c(TRUE, TRUE, FALSE, TRUE, FALSE)]
@@ -291,6 +321,7 @@ paises[c(TRUE, TRUE, FALSE, TRUE, FALSE)]
 
 ##### Operaciones
 En los vectores pueden aplicarse operaciones aritméticas:
+
 ```{r collapse=TRUE}
 a <- c(1, 3, 5, 7)
 b <- c(2, 4, 6, 8)
@@ -303,6 +334,7 @@ a * b
 ```
 
 Y también pueden realizarse operaciones relacionales:
+
 ```{r collapse=TRUE}
 # Comparación con el operador <
 a < b

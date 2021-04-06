@@ -86,29 +86,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Procesamiento de datos con R: El lenguaje de programación R</title>
+  <title>Procesamiento de datos con R: Introducción a R</title>
 
-  <meta property="description" itemprop="description" content="Características generales del lenguaje R."/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Procesamiento de datos con R: El lenguaje de programación R"/>
+  <meta property="og:title" content="Procesamiento de datos con R: Introducción a R"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Características generales del lenguaje R."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Procesamiento de datos con R"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Procesamiento de datos con R: El lenguaje de programación R"/>
-  <meta property="twitter:description" content="Características generales del lenguaje R."/>
+  <meta property="twitter:title" content="Procesamiento de datos con R: Introducción a R"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["El lenguaje de programación R"]},{"type":"character","attributes":{},"value":["Características generales del lenguaje R.\n"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Introducción a R"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2032,361 +2029,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </script>
 
-  <style type="text/css">
-  /* base variables */
-
-  /* Edit the CSS properties in this file to create a custom
-     Distill theme. Only edit values in the right column
-     for each row; values shown are the CSS defaults.
-     To return any property to the default,
-     you may set its value to: unset
-     All rows must end with a semi-colon.                      */
-
-  /* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-
-
-
-  html {
-    /*-- Main font sizes --*/
-    --title-size:      50px;
-    --body-size:       1.06rem;
-    --code-size:       14px;
-    --aside-size:      12px;
-    --fig-cap-size:    13px;
-    /*-- Main font colors --*/
-    --title-color:     #000000;
-    --header-color:    rgba(0, 0, 0, 0.8);
-    --body-color:      rgba(0, 0, 0, 0.8);
-    --aside-color:     rgba(0, 0, 0, 0.6);
-    --fig-cap-color:   rgba(0, 0, 0, 0.6);
-    /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    sans-serif;
-    --mono-font:       monospace;
-    --body-font:       sans-serif;
-    --navbar-font:     sans-serif;  /* websites + blogs only */
-  }
-
-  /*-- ARTICLE METADATA --*/
-  d-byline {
-    --heading-size:    0.6rem;
-    --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       0.8rem;
-    --body-color:      rgba(0, 0, 0, 0.8);
-  }
-
-  /*-- ARTICLE TABLE OF CONTENTS --*/
-  .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
-  }
-
-  /*-- ARTICLE APPENDIX --*/
-  d-appendix {
-    --heading-size:    15px;
-    --heading-color:   rgba(0, 0, 0, 0.65);
-    --text-size:       0.8em;
-    --text-color:      rgba(0, 0, 0, 0.5);
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  /* These properties only apply to Distill sites and blogs  */
-
-  .distill-site-header {
-    --title-size:       18px;
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  .distill-site-footer {
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below                      */
-  </style>
-  <style type="text/css">/* base variables */
-
-  /* Edit the CSS properties in this file to create a custom
-     Distill theme. Only edit values in the right column
-     for each row; values shown are the CSS defaults.
-     To return any property to the default,
-     you may set its value to: unset
-     All rows must end with a semi-colon.                      */
-
-  /* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-
-  /* Fonts */
-  @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');
-
-  html {
-    /*-- Main font sizes --*/
-    --title-size:      50px;
-    --body-size:       1.06rem;
-    --code-size:       14px;
-    --aside-size:      13px;
-    --fig-cap-size:    13px;
-    /*-- Main font colors --*/
-    --title-color:     #122140;
-    --header-color:    #122140;
-    --body-color:      rgba(0, 0, 0, 0.8);
-    --aside-color:     rgba(0, 0, 0, 0.6);
-    --fig-cap-color:   rgba(0, 0, 0, 0.6);
-    /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    "Lora", sans-serif;
-    --mono-font:       "Fira Code", monospace;
-    --body-font:       "Source Sans Pro", sans-serif;
-    --navbar-font:     "Lora", sans-serif;  /* websites + blogs only */
-  }
-
-  /*-- ARTICLE METADATA --*/
-  d-byline {
-    --heading-size:    0.9rem;
-    --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       1rem;
-    --body-color:      rgba(0, 0, 0, 0.8);
-  }
-
-  /*-- ARTICLE TABLE OF CONTENTS --*/
-  .d-contents {
-    --heading-size:    20px;
-    --contents-size:   16px;
-  }
-
-  /*-- ARTICLE APPENDIX --*/
-  d-appendix {
-    --heading-size:    15px;
-    --heading-color:   rgba(0, 0, 0, 0.65);
-    --text-size:       0.8em;
-    --text-color:      rgba(0, 0, 0, 0.5);
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  /* These properties only apply to Distill sites and blogs  */
-
-  .distill-site-header {
-    --title-size:       18px;
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        16px;
-    --hover-color:      white;
-    --bkgd-color:       #122140;
-  }
-
-  .distill-site-footer {
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below                      */
-
-  /* Change bullets */
-  ul > li::marker {
-    font-size: 1.125em;
-    color: #e5bf00;
-  }
-
-  /* Change link appearance */
-  d-article a {
-    border-bottom: 1.5px solid #e5bf00;
-    text-decoration: none;
-  }
-
-  /* Change navbar header appearance */
-  .distill-site-header {
-    font-weight: 500;
-    letter-spacing: 0.06em;
-  }
-
-  .distill-site-header a:hover {
-    text-decoration: underline;
-  }
-
-  /* Change site description appearance */
-  d-title p {
-    font-size: 20px;
-    font-weight: 500;
-  }
-
-  /* Change site metadata appearance */
-  d-byline .byline h3 {
-    font-family: 'Lora';
-    letter-spacing: 0.07em;
-  }
-
-  d-byline a:hover {
-    text-decoration: underline;
-  }
-
-  /*-- Code --*/
-  code, pre {
-      font-family: "Source Code Pro", "Lucida Console",
-      Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  }</style>
-  <style type="text/css">
-  /* base style */
-
-  /* FONT FAMILIES */
-
-  :root {
-    --heading-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-    --mono-default: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    --body-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-  }
-
-  body,
-  .posts-list .post-preview p,
-  .posts-list .description p {
-    font-family: var(--body-font), var(--body-default);
-  }
-
-  h1, h2, h3, h4, h5, h6,
-  .posts-list .post-preview h2,
-  .posts-list .description h2 {
-    font-family: var(--heading-font), var(--heading-default);
-  }
-
-  d-article div.sourceCode code,
-  d-article pre code {
-    font-family: var(--mono-font), var(--mono-default);
-  }
-
-
-  /*-- TITLE --*/
-  d-title h1,
-  .posts-list > h1 {
-    color: var(--title-color, black);
-  }
-
-  d-title h1 {
-    font-size: var(--title-size, 50px);
-  }
-
-  /*-- HEADERS --*/
-  d-article h1,
-  d-article h2,
-  d-article h3,
-  d-article h4,
-  d-article h5,
-  d-article h6 {
-    color: var(--header-color, rgba(0, 0, 0, 0.8));
-  }
-
-  /*-- BODY --*/
-  d-article > p,  /* only text inside of <p> tags */
-  d-article > ul, /* lists */
-  d-article > ol {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-    font-size: var(--body-size, 1.06rem);
-  }
-
-
-  /*-- CODE --*/
-  d-article div.sourceCode code,
-  d-article pre code {
-    font-size: var(--code-size, 14px);
-  }
-
-  /*-- ASIDE --*/
-  d-article aside {
-    font-size: var(--aside-size, 12px);
-    color: var(--aside-color, rgba(0, 0, 0, 0.6));
-  }
-
-  /*-- FIGURE CAPTIONS --*/
-  figure .caption,
-  figure figcaption,
-  .figure .caption {
-    font-size: var(--fig-cap-size, 13px);
-    color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
-  }
-
-  /*-- METADATA --*/
-  d-byline h3 {
-    font-size: var(--heading-size, 0.6rem);
-    color: var(--heading-color, rgba(0, 0, 0, 0.5));
-  }
-
-  d-byline {
-    font-size: var(--body-size, 0.8rem);
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-  }
-
-  d-byline a,
-  d-article d-byline a {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-  }
-
-  /*-- TABLE OF CONTENTS --*/
-  .d-contents nav h3 {
-    font-size: var(--heading-size, 18px);
-  }
-
-  .d-contents nav a {
-    font-size: var(--contents-size, 13px);
-  }
-
-  /*-- APPENDIX --*/
-  d-appendix h3 {
-    font-size: var(--heading-size, 15px);
-    color: var(--heading-color, rgba(0, 0, 0, 0.65));
-  }
-
-  d-appendix {
-    font-size: var(--text-size, 0.8em);
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
-  }
-
-  d-appendix d-footnote-list a.footnote-backlink {
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  .distill-site-header .title {
-    font-size: var(--title-size, 18px);
-    font-family: var(--navbar-font), var(--heading-default);
-  }
-
-  .distill-site-header a,
-  .nav-dropdown .nav-dropbtn {
-    font-family: var(--navbar-font), var(--heading-default);
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    font-size: var(--text-size, 15px);
-  }
-
-  .distill-site-header a:hover,
-  .nav-dropdown:hover .nav-dropbtn {
-    color: var(--hover-color, white);
-  }
-
-  .distill-site-header {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
-  }
-
-  .distill-site-footer {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
-  }
-
-  .distill-site-footer a:hover {
-    color: var(--hover-color, white);
-  }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2408,7 +2050,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"El lenguaje de programación R","description":"Características generales del lenguaje R.","authors":[]}
+{"title":"Introducción a R","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2434,14 +2076,41 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>El lenguaje de programación R</h1>
+<h1>Introducción a R</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Características generales del lenguaje R.</p></p>
+
 </div>
 
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#características-generales">Características generales</a></li>
+<li><a href="#el-ambiente-de-desarrollo-rstudio">El ambiente de desarrollo RStudio</a></li>
+<li><a href="#el-lenguaje-r">El lenguaje R</a>
+<ul>
+<li><a href="#funciones">Funciones</a>
+<ul>
+<li><a href="#ejemplos">Ejemplos</a></li>
+<li><a href="#parámetros">Parámetros</a></li>
+<li><a href="#ayuda-sobre-funciones">Ayuda sobre funciones</a></li>
+<li><a href="#bibliotecas-y-paquetes">Bibliotecas y paquetes</a></li>
+</ul></li>
+<li><a href="#tipos-de-datos">Tipos de datos</a>
+<ul>
+<li><a href="#básicos">Básicos</a></li>
+<li><a href="#tipos-compuestos">Tipos compuestos</a></li>
+<li><a href="#otros">Otros</a></li>
+</ul></li>
+<li><a href="#conjuntos-de-datos-para-pruebas">Conjuntos de datos para pruebas</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h1 id="características-generales">Características generales</h1>
 <p><a href="https://www.r-project.org/">R</a> es un lenguaje de programación enfocado en análisis estadístico. Es ampliamente utilizado en diversas áreas de investigación, entre las que pueden mencionarse <a href="https://en.wikipedia.org/wiki/Machine_learning">aprendizaje automático (<em>machine learning</em>)</a>, <a href="https://en.wikipedia.org/wiki/Data_science">ciencia de datos (<em>data science</em>)</a> y <a href="https://en.wikipedia.org/wiki/Big_data"><em>big data</em></a>, con aplicaciones en campos como biomedicina, bioinformática y finanzas, entre muchos otros. Fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, en 1993.</p>
 <p>Algunas de las principales características de este lenguaje son:</p>
 <ul>
@@ -2452,12 +2121,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ul>
 <p>R es un proyecto de <a href="https://en.wikipedia.org/wiki/Free_software">software libre</a> que se comparte mediante una licencia <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public Licence (GNU GPL)</a>. Esta característica permite que la funcionalidad original de R pueda ser ampliada mediante bibliotecas o paquetes desarrollados por la comunidad de programadores.</p>
 <p>Para programar en R, puede utilizarse una interfaz de línea de comandos y también ambientes de desarrollo integrados (IDE, <em>integrated development environment</em>) como <a href="https://jupyter.org/">Jupyter</a> o <a href="https://rstudio.com/">RStudio</a>.</p>
+<h1 id="el-ambiente-de-desarrollo-rstudio">El ambiente de desarrollo RStudio</h1>
+<p><a href="https://www.rstudio.com/">RStudio</a> es el IDE más popular para el lenguaje R. Está disponible en una versión de escritorio (RStudio Desktop) y en una versión para servidor (RStudio Server). Esta última permite la conexión de varios usuarios a través de un navegador web. RStudio se ofrece también como un servicio en la nube, a través de <a href="https://www.rstudio.com/products/cloud/">RStudio Cloud</a>.</p>
+<figure>
+<img src="img/rstudio.png" />
+<figcaption>
+Interfaz de RStudio.
+</figcaption>
+</figure>
+<p>Además de edición de código fuente en R (y otros lenguajes), RStudio contiene capacidades para depurar código y visualizar datos en formatos tabulares, gráficos y de mapas.</p>
+<h1 id="el-lenguaje-r">El lenguaje R</h1>
 <h2 id="funciones">Funciones</h2>
 <p>R, al igual que otros lenguajes de programación, estructura su funcionalidad en segmentos de <a href="https://en.wikipedia.org/wiki/Source_code">código fuente</a> llamados <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions">funciones</a>. Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático. Todas las funciones tienen un nombre y un conjunto de parámetros que especifican los datos de entrada que procesa la función. Los parámetros se escriben entre paréntesis redondos (<code>()</code>) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún parámetro. Si la función tiene varios parámetros, deben separarse mediante comas (<code>,</code>).</p>
+<h3 id="ejemplos">Ejemplos</h3>
 <p>Por ejemplo, la función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/print">print()</a> recibe como parámetro un valor (ej. un texto o un número) para imprimirlo en la pantalla. En el siguiente fragmento de código en R, se utiliza <code>print()</code> para imprimir la hilera <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">“Hola mundo”</a>. Nótese el uso del símbolo <code>#</code> para comentarios (i.e. texto que no es código ejecutable).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Impresión de una hilera de carácteres</span>
+
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"Hola mundo"</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2476,6 +2157,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Impresión del directorio de trabajo</span>
+
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2485,14 +2167,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Definición del directorio de trabajo (la ruta debe existir)</span>
+
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"C:/Users/mfvargas"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
+<h3 id="parámetros">Parámetros</h3>
 <p>Los parámetros de las funciones tienen nombres que pueden especificarse en caso de ser necesario. En el siguiente ejemplo, se utilizan los nombres de los parámetros <code>x</code>, <code>xlab</code> y <code>ylab</code> de la función <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot">plot()</a> para especificar la fuente de datos y las etiquetas de los ejes x e y de un gráfico.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico con etiquetas en los ejes x e y del conjunto de datos "cars"</span>
+
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>
   x<span class='op'>=</span><span class='va'>cars</span>, 
   xlab<span class='op'>=</span><span class='st'>"Velocidad"</span>, 
@@ -2500,21 +2185,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="01-r-lenguaje_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+<p><img src="01-r-introduccion_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
 </div>
+<h3 id="ayuda-sobre-funciones">Ayuda sobre funciones</h3>
 <p>Para obtener ayuda de una función desde la línea de comandos de R, puede utilizarse un signo de pregunta (<code>?</code>) seguido del nombre de la función. Por ejemplo:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ayuda de la función setwd()</span>
+
 <span class='op'>?</span><span class='va'>setwd</span>
 </code></pre>
 </div>
 </div>
 <p>También puede obtenerse ayuda sobre una función en los buscadores de Internet (ej. Google), además de ejemplos y otros materiales de apoyo. El sitio <a href="https://www.rdocumentation.org/">R Documentation and manuals - R Documentation</a> reúne la documentación de las funciones de R.</p>
+<h3 id="bibliotecas-y-paquetes">Bibliotecas y paquetes</h3>
 <p>Las funciones de R se agrupan en conjuntos llamados bibliotecas, las cuales se distribuyen en <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">paquetes</a>. Para utilizar un paquete, este debe cargarse (en la memoria del computador) primero con la función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/library">library()</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga del paquete stats</span>
+
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>stats</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2523,6 +2212,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Instalación del paquete dplyr</span>
+
 <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"dplyr"</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2806,7 +2496,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>[1] &quot;China&quot;</code></pre>
 </div>
-El operador <code>:</code> puede utilizarse para especificar un rango de índices:
+<p>El operador <code>:</code> puede utilizarse para especificar un rango de índices:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Elementos entre los índices 2 y 4 (2, 3 y 4)</span>
@@ -2815,7 +2505,7 @@ El operador <code>:</code> puede utilizarse para especificar un rango de índice
 </div>
 <pre><code>[1] &quot;Francia&quot;   &quot;China&quot;     &quot;Australia&quot;</code></pre>
 </div>
-Con la función <code>c()</code>, es posible especificar un conjunto de índices específicos:
+<p>Con la función <code>c()</code>, es posible especificar un conjunto de índices específicos:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Elementos entre los índices 1, 4 y 5</span>
@@ -2824,7 +2514,7 @@ Con la función <code>c()</code>, es posible especificar un conjunto de índices
 </div>
 <pre><code>[1] &quot;Argentina&quot; &quot;Australia&quot; &quot;México&quot;   </code></pre>
 </div>
-Los números negativos pueden usarse para excluir índices:
+<p>Los números negativos pueden usarse para excluir índices:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Exclusión de los índices 3 y 4</span>
@@ -2833,7 +2523,7 @@ Los números negativos pueden usarse para excluir índices:
 </div>
 <pre><code>[1] &quot;Argentina&quot; &quot;Francia&quot;   &quot;México&quot;   </code></pre>
 </div>
-Los valores lógicos <code>TRUE</code> y <code>FALSE</code> también pueden usarse para incluir y excluir índices de un vector:
+<p>Los valores lógicos <code>TRUE</code> y <code>FALSE</code> también pueden usarse para incluir y excluir índices de un vector:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Se incluyen los índices 1, 2 y 4; y se excluyen los índices 3 y 5</span>
@@ -2843,7 +2533,7 @@ Los valores lógicos <code>TRUE</code> y <code>FALSE</code> también pueden usar
 <pre><code>[1] &quot;Argentina&quot; &quot;Francia&quot;   &quot;Australia&quot;</code></pre>
 </div>
 <h5 id="operaciones">Operaciones</h5>
-En los vectores pueden aplicarse operaciones aritméticas:
+<p>En los vectores pueden aplicarse operaciones aritméticas:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>5</span>, <span class='fl'>7</span><span class='op'>)</span>
@@ -2862,7 +2552,7 @@ En los vectores pueden aplicarse operaciones aritméticas:
 </div>
 <pre><code>[1]  2 12 30 56</code></pre>
 </div>
-Y también pueden realizarse operaciones relacionales:
+<p>Y también pueden realizarse operaciones relacionales:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Comparación con el operador &lt;</span>
@@ -3181,7 +2871,7 @@ La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2
 <span class='va'>fecha_actual</span>
 </code></pre>
 </div>
-<pre><code>[1] &quot;2021-04-05&quot;</code></pre>
+<pre><code>[1] &quot;2021-04-06&quot;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class='co'># Tipo de datos</span>
