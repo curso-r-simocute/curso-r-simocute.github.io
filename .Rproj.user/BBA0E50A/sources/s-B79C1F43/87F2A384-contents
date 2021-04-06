@@ -1,7 +1,7 @@
 name: "curso-r-simocute.github.io"
-title: "El lenguaje de programacion R"
+title: "Procesamiento de datos con R"
 description: |
-  Curso sobre el lenguaje de programación R. Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute). 2021.
+  Curso sobre procesamiento de datos con el lenguaje de programación R organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).
 output_dir: "docs"
 theme: theme.css
 navbar:

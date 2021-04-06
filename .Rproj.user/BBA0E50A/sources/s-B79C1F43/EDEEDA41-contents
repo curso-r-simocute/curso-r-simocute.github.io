@@ -1,7 +1,7 @@
 ---
-title: "El lenguaje de programación R"
+title: "Procesamiento de datos con R"
 description: |
-  Curso sobre el lenguaje de programación R. Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute). 2021.
+  Curso sobre procesamiento de datos con el lenguaje de programación R organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).
 site: distill::distill_website
 ---
 
@@ -16,7 +16,14 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-# Descripción
+# Bienvenida
 Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación [R](https://www.r-project.org/). Es organizado por el [Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute)](https://simocute.go.cr/).
+
+# Equipo necesario
+- Una computadora en la que cuente con los privilegios necesarios para instalar software.
+
+# Trabajo previo al inicio del curso
+- Instale [R](https://cloud.r-project.org/) y [RStudio](https://www.rstudio.com/products/rstudio/download/) en su computadora. Puede aceptar las opciones que los programas instaladores le presentan por defecto. Si lo desea, puede ver los siguientes videos que muestran detalladamente el proceso de instalación en los sistemas operativos [Windows](https://www.youtube.com/watch?v=k0oCZdJPsDU), [macOS](https://www.maximaformacion.es/blog-dat/instala-r-y-rstudio-en-mac-os/) y [Linux (Ubuntu)](https://www.youtube.com/watch?v=3ni-jP2qEWg).
+- Instale el sistema para control de versiones [Git](https://git-scm.com/downloads).
 
 # Contenidos
