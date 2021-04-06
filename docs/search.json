@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "path": "01-r-lenguaje.html",
+      "title": "El lenguaje de programación R",
+      "description": "Características generales del lenguaje R.\n",
+      "author": [],
+      "contents": "\r\nR es un lenguaje…\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-04-05T20:13:44-06:00"
+    },
+    {
       "path": "about.html",
       "title": "About this site",
       "description": "Some additional details about the website",
@@ -11,10 +19,10 @@
     {
       "path": "index.html",
       "title": "Procesamiento de datos con R",
-      "description": "Curso sobre procesamiento de datos con el lenguaje de programación R organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).\n",
+      "description": "Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R.  Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).\n",
       "author": [],
-      "contents": "\r\nBienvenida\r\nEste es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R. Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).\r\nEquipo necesario\r\nUna computadora en la que cuente con los privilegios necesarios para instalar software.\r\nTrabajo previo al inicio del curso\r\nInstale R y RStudio en su computadora. Puede aceptar las opciones que los programas instaladores le presentan por defecto. Si lo desea, puede ver los siguientes videos que muestran detalladamente el proceso de instalación en los sistemas operativos Windows, macOS y Linux (Ubuntu).\r\nInstale el sistema para control de versiones Git.\r\nContenidos\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-04-05T19:56:33-06:00"
+      "contents": "\r\nBienvenida\r\nEste es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R. Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).\r\nEquipo necesario\r\nUna computadora en la que cuente con los privilegios necesarios para instalar software.\r\nTrabajo previo al inicio del curso\r\nInstale R y RStudio en su computadora. Puede aceptar las opciones que los programas instaladores le presentan por defecto. Si lo desea, puede ver los siguientes videos que muestran detalladamente el proceso de instalación en los sistemas operativos Windows, macOS y Linux (Ubuntu).\r\nInstale el sistema para control de versiones Git.\r\nContenidos\r\n01 El lenguaje de programación R\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-04-05T20:12:13-06:00"
     }
   ],
   "collections": []
