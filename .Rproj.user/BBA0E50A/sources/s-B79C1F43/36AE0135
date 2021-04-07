@@ -3,7 +3,7 @@
     "path": "C:/Users/mfvargas/curso-r-simocute/curso-r-simocute.github.io/01-r-introduccion.Rmd",
     "project_path": "01-r-introduccion.Rmd",
     "type": "r_markdown",
-    "hash": "2375164750",
+    "hash": "3633709296",
     "contents": "",
     "dirty": false,
     "created": 1617680487534.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "121,31",
-        "scrollLine": "114"
+        "cursorPosition": "487,215",
+        "scrollLine": "480"
     },
     "folds": "",
-    "lastKnownWriteTime": 1617753906,
+    "lastKnownWriteTime": 1617758107,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1617753906023,
+    "last_content_update": 1617758107896,
     "read_only": false,
     "read_only_alternatives": []
 }

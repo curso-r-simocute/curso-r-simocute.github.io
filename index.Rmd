@@ -27,4 +27,7 @@ Este es un curso introductorio al procesamiento de datos mediante el lenguaje de
 - Instale el sistema para control de versiones [Git](https://git-scm.com/downloads).
 
 # Contenidos
-[01 Introducción a R](01-r-introduccion.html)
+[01 Introducción a R](01-r-introduccion.html)  
+02 Importación de datos  
+03 Graficación  
+04 Manejo de datos geoespaciales  

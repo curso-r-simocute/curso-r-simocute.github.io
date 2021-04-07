@@ -197,10 +197,10 @@ typeof(y)
 typeof(x * y)
 ```
 
-Nótese que al declararse una variable numérica, ya sea que tenga o no punto decimal, R la considera por defecto de tipo ```double```. Para que se considere de tipo ```integer```, debe utilizarse el sufijo  ```L ``` o la función  ```integer()```.
+Nótese que al declararse una variable numérica, ya sea que tenga o no punto decimal, R la considera por defecto de tipo ```double```. Para que se considere de tipo ```integer```, debe utilizarse el sufijo  ```L ``` o la función  ```as.integer()```.
 
 #### Carácteres
-Se utilizan para representar textos. Deben estar encerrados entre comillas simples ```'```o dobles ```"```.
+Se utilizan para representar textos. Deben estar encerrados entre comillas simples (```''```) o dobles (```""```).
 
 ```{r collapse=TRUE}
 # Hileras de carácteres
@@ -477,22 +477,25 @@ poblaciones_paises
 ##### Operaciones
 R proporciona una gran variedad de funciones para manejar data frames. Las siguientes son algunas de las más utilizadas.
 
-La función [read.table()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table) lee los datos contenidos en un archivo de texto y los retorna en un data frame. ```read.csv()``` es una función derivada, con valores por defecto orientados a los archivos de valores separados por comas (CSV, _Comma Separated Values_).
-```{r collapse=TRUE}
-# Lectura de archivo CSV con casos de COVID-19 en Centroamérica
-casos_covid19_ca <- read.csv("https://raw.githubusercontent.com/pf0953-programaciongeoespacialr-2020/datos/master/covid19/casos/ca/2020_09_01_CSV_GENERAL.csv")
+La función [read.table()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table) lee los datos contenidos en un archivo de texto y los retorna en un data frame. ```read.csv()``` es una función derivada, con valores por defecto orientados a los archivos de valores separados por comas (CSV, _Comma Separated Values_). Como parámetro principal, ```read.csv()``` recibe la ruta del archivo CSV, el cual puede encontrarse en un disco local, en la Web o en otra ubicación.
 
-# Impresión
+```{r collapse=TRUE}
+# Lectura de archivo CSV ubicado en la Web
+casos_covid19_ca <- read.csv("https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/covid-card.csv")
+
 casos_covid19_ca
 ```
+**Ejercicio**: descargue el archivo del ejemplo anterior (https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/covid-card.csv) en su computadora y cárguelo en otro data frame mediante ```read.csv()```.
 
 La función [str()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/str) despliega la estructura de un objeto R.
+
 ```{r collapse=TRUE}
 # Estructura del data frame
 str(poblaciones_paises)
 ```
 
 La función [summary()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/summary) proporciona un resumen de los contenidos de un data frame:
+
 ```{r collapse=TRUE}
 # Resumen de los contenidos del data frame
 summary(poblaciones_paises)
@@ -510,6 +513,7 @@ Las fecha se manejan en R mediante un tipo especial que permite realizar operaci
 
 ##### Operaciones
 La función [Sys.Date()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/Sys.time) retorna la fecha actual.
+
 ```{r collapse=TRUE}
 # Fecha actual
 fecha_actual <- Sys.Date()
@@ -523,6 +527,7 @@ class(fecha_actual)
 ```
 
 La función [as.Date()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/as.Date) convierte datos entre los tipos fecha y carácter, de acuerdo con un formato.
+
 ```{r collapse=TRUE}
 # Conversión de fecha en formato año-mes-día
 fecha_caracter_01 <- "2020-01-01"
@@ -537,6 +542,7 @@ fecha_02
 # Diferencia entre fechas
 fecha_02 - fecha_01
 ```
+
 Hay una lista de formatos de fechas en [Date Formats in R - R-bloggers](https://www.r-bloggers.com/date-formats-in-r/).
 
 # Conjuntos de datos para pruebas

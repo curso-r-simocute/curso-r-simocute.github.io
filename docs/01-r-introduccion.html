@@ -2377,9 +2377,9 @@ mean&gt; c(xm, mean(x, trim = 0.10))
 </div>
 <pre><code>[1] &quot;integer&quot;</code></pre>
 </div>
-<p>Nótese que al declararse una variable numérica, ya sea que tenga o no punto decimal, R la considera por defecto de tipo <code>double</code>. Para que se considere de tipo <code>integer</code>, debe utilizarse el sufijo <code>L</code> o la función <code>integer()</code>.</p>
+<p>Nótese que al declararse una variable numérica, ya sea que tenga o no punto decimal, R la considera por defecto de tipo <code>double</code>. Para que se considere de tipo <code>integer</code>, debe utilizarse el sufijo <code>L</code> o la función <code>as.integer()</code>.</p>
 <h4 id="carácteres">Carácteres</h4>
-<p>Se utilizan para representar textos. Deben estar encerrados entre comillas simples <code>'</code>o dobles <code>"</code>.</p>
+<p>Se utilizan para representar textos. Deben estar encerrados entre comillas simples (<code>''</code>) o dobles (<code>""</code>).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Hileras de carácteres</span>
@@ -2840,27 +2840,27 @@ Mario   25    1000</code></pre>
 </div>
 <h5 id="operaciones-2">Operaciones</h5>
 <p>R proporciona una gran variedad de funciones para manejar data frames. Las siguientes son algunas de las más utilizadas.</p>
-La función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table">read.table()</a> lee los datos contenidos en un archivo de texto y los retorna en un data frame. <code>read.csv()</code> es una función derivada, con valores por defecto orientados a los archivos de valores separados por comas (CSV, <em>Comma Separated Values</em>).
+<p>La función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table">read.table()</a> lee los datos contenidos en un archivo de texto y los retorna en un data frame. <code>read.csv()</code> es una función derivada, con valores por defecto orientados a los archivos de valores separados por comas (CSV, <em>Comma Separated Values</em>). Como parámetro principal, <code>read.csv()</code> recibe la ruta del archivo CSV, el cual puede encontrarse en un disco local, en la Web o en otra ubicación.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Lectura de archivo CSV con casos de COVID-19 en Centroamérica</span>
-<span class='va'>casos_covid19_ca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/pf0953-programaciongeoespacialr-2020/datos/master/covid19/casos/ca/2020_09_01_CSV_GENERAL.csv"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Lectura de archivo CSV ubicado en la Web</span>
+<span class='va'>casos_covid19_ca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/covid-card.csv"</span><span class='op'>)</span>
 
-<span class='co'># Impresión</span>
 <span class='va'>casos_covid19_ca</span>
 </code></pre>
 </div>
-<pre><code>  pais fallecidos recuperados activos positivos
-1  BLZ         13         213     824      1050
-2  CRI        443       16270   25471     42184
-3  GTM       2790       63688    9166     75644
-4  HND       1888       10430   49451     61769
-5  NIC        141        3458     174      3773
-6  PAN       2018       66974   24560     93552
-7  SLV        731       14879   10294     25904
-8  DOM       1765       69519   24343     95627</code></pre>
+<pre><code>  pais fallecidos recuperados activos confirmados
+1  BLZ        317       12090      49       12456
+2  CRI       2957      192699   21108      216764
+3  GTM       6894      180527    8259      195680
+4  HND       4681       73463  112992      191136
+5  NIC        179        5137      50        5366
+6  PAN       6138      345719    4699      356556
+7  SLV       2030       62340    1121       65491
+8  DOM       3355      214704   36544      254503</code></pre>
 </div>
-La función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/str">str()</a> despliega la estructura de un objeto R.
+<p><strong>Ejercicio</strong>: descargue el archivo del ejemplo anterior (<a href="https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/covid-card.csv" class="uri">https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/covid-card.csv</a>) en su computadora y cárguelo en otro data frame mediante <code>read.csv()</code>.</p>
+<p>La función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/str">str()</a> despliega la estructura de un objeto R.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Estructura del data frame</span>
@@ -2871,7 +2871,7 @@ La función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.
  $ pais     : chr  &quot;PAN&quot; &quot;CRI&quot; &quot;NIC&quot; &quot;SLV&quot; ...
  $ poblacion: num  8.2 10 12.4 12.8 18.4 33.8 0.6 21.2</code></pre>
 </div>
-La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/summary">summary()</a> proporciona un resumen de los contenidos de un data frame:
+<p>La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/summary">summary()</a> proporciona un resumen de los contenidos de un data frame:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Resumen de los contenidos del data frame</span>
@@ -2897,7 +2897,7 @@ La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2
 <h4 id="fechas">Fechas</h4>
 <p>Las fecha se manejan en R mediante un tipo especial que permite realizar operaciones como diferencias, agrupamientos y otras. Internamente, las fechas en R se almacenan como un número que representa la cantidad de días transcurridos desde el 1 de enero de 1970 (1970-01-01).</p>
 <h5 id="operaciones-3">Operaciones</h5>
-La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/Sys.time">Sys.Date()</a> retorna la fecha actual.
+<p>La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/Sys.time">Sys.Date()</a> retorna la fecha actual.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Fecha actual</span>
@@ -2921,7 +2921,7 @@ La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2
 </div>
 <pre><code>[1] &quot;Date&quot;</code></pre>
 </div>
-La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/as.Date">as.Date()</a> convierte datos entre los tipos fecha y carácter, de acuerdo con un formato.
+<p>La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/as.Date">as.Date()</a> convierte datos entre los tipos fecha y carácter, de acuerdo con un formato.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Conversión de fecha en formato año-mes-día</span>
