@@ -13,7 +13,7 @@
       "description": "Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R.  Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).\n",
       "author": [],
       "contents": "\r\nBienvenida\r\nEste es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R. Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).\r\nEquipo necesario\r\nUna computadora en la que cuente con los privilegios necesarios para instalar software.\r\nTrabajo previo al inicio del curso\r\nInstale R y RStudio en su computadora. Puede aceptar las opciones que los programas instaladores le presentan por defecto. Si lo desea, puede ver los siguientes videos que muestran detalladamente el proceso de instalación en los sistemas operativos Windows, macOS y Linux (Ubuntu).\r\nInstale el sistema para control de versiones Git.\r\nContenidos\r\n01 Introducción a R\r\n02 Importación de datos\r\n03 Graficación\r\n04 Manejo de datos geoespaciales\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-04-06T19:51:28-06:00"
+      "last_modified": "2021-04-06T20:09:06-06:00"
     }
   ],
   "collections": []
