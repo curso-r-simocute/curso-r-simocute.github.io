@@ -105,7 +105,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Introducción a R"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Introducción a R"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2101,12 +2101,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ul></li>
 <li><a href="#tipos-de-datos">Tipos de datos</a>
 <ul>
-<li><a href="#básicos">Básicos</a></li>
-<li><a href="#tipos-compuestos">Tipos compuestos</a></li>
-<li><a href="#otros">Otros</a></li>
+<li><a href="#básicos">Básicos</a>
+<ul>
+<li><a href="#números">Números</a></li>
+<li><a href="#carácteres">Carácteres</a></li>
+<li><a href="#lógicos">Lógicos</a></li>
+<li><a href="#vectores">Vectores</a></li>
+<li><a href="#matrices">Matrices</a></li>
+</ul></li>
+<li><a href="#tipos-compuestos">Tipos compuestos</a>
+<ul>
+<li><a href="#data-frames">Data Frames</a></li>
+</ul></li>
+<li><a href="#otros">Otros</a>
+<ul>
+<li><a href="#fechas">Fechas</a></li>
+</ul></li>
+</ul></li>
 </ul></li>
 <li><a href="#conjuntos-de-datos-para-pruebas">Conjuntos de datos para pruebas</a></li>
-</ul></li>
 </ul>
 </nav>
 </div>
@@ -2131,14 +2144,14 @@ Interfaz de RStudio.
 </figure>
 <p>Además de edición de código fuente en R (y otros lenguajes), RStudio contiene capacidades para depurar código y visualizar datos en formatos tabulares, gráficos y de mapas.</p>
 <h1 id="el-lenguaje-r">El lenguaje R</h1>
+<p>En esta sección, se explican algunos de los aspectos principales de la <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html">definición del lenguaje R</a>. Específicamente, el concepto de función y los tipos de datos que maneja R.</p>
 <h2 id="funciones">Funciones</h2>
-<p>R, al igual que otros lenguajes de programación, estructura su funcionalidad en segmentos de <a href="https://en.wikipedia.org/wiki/Source_code">código fuente</a> llamados <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions">funciones</a>. Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático. Todas las funciones tienen un nombre y un conjunto de parámetros que especifican los datos de entrada que procesa la función. Los parámetros se escriben entre paréntesis redondos (<code>()</code>) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún parámetro. Si la función tiene varios parámetros, deben separarse mediante comas (<code>,</code>).</p>
+<p>R, al igual que otros lenguajes de programación, estructura su funcionalidad en unidades de <a href="https://en.wikipedia.org/wiki/Source_code">código fuente</a> llamados <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions">funciones</a>. Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático. Todas las funciones tienen un nombre y un conjunto de parámetros que especifican los datos de entrada que procesa la función. Los parámetros se escriben entre paréntesis redondos (<code>()</code>) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún parámetro. Si la función tiene varios parámetros, deben separarse mediante comas (<code>,</code>).</p>
 <h3 id="ejemplos">Ejemplos</h3>
 <p>Por ejemplo, la función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/print">print()</a> recibe como parámetro un valor (ej. un texto o un número) para imprimirlo en la pantalla. En el siguiente fragmento de código en R, se utiliza <code>print()</code> para imprimir la hilera <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">“Hola mundo”</a>. Nótese el uso del símbolo <code>#</code> para comentarios (i.e. texto que no es código ejecutable).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Impresión de una hilera de carácteres</span>
-
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"Hola mundo"</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2157,7 +2170,6 @@ Interfaz de RStudio.
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Impresión del directorio de trabajo</span>
-
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2167,17 +2179,15 @@ Interfaz de RStudio.
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Definición del directorio de trabajo (la ruta debe existir)</span>
-
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"C:/Users/mfvargas"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <h3 id="parámetros">Parámetros</h3>
-<p>Los parámetros de las funciones tienen nombres que pueden especificarse en caso de ser necesario. En el siguiente ejemplo, se utilizan los nombres de los parámetros <code>x</code>, <code>xlab</code> y <code>ylab</code> de la función <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot">plot()</a> para especificar la fuente de datos y las etiquetas de los ejes x e y de un gráfico.</p>
+<p>Los parámetros de las funciones tienen nombres que pueden especificarse, en caso de ser necesario. En el siguiente ejemplo, se utilizan los nombres de los parámetros <code>x</code>, <code>xlab</code> y <code>ylab</code> de la función <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot">plot()</a> para especificar la fuente de datos y las etiquetas de los ejes x e y de un gráfico.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico con etiquetas en los ejes x e y del conjunto de datos "cars"</span>
-
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>
   x<span class='op'>=</span><span class='va'>cars</span>, 
   xlab<span class='op'>=</span><span class='st'>"Velocidad"</span>, 
@@ -2188,22 +2198,47 @@ Interfaz de RStudio.
 <p><img src="01-r-introduccion_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
 </div>
 <h3 id="ayuda-sobre-funciones">Ayuda sobre funciones</h3>
-<p>Para obtener ayuda de una función desde la línea de comandos de R, puede utilizarse un signo de pregunta (<code>?</code>) seguido del nombre de la función. Por ejemplo:</p>
+<p>Para obtener ayuda de una función desde la línea de comandos de R, puede utilizarse un signo de pregunta (<code>?</code>) seguido del nombre de la función o bien la función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/help">help()</a>. Por ejemplo:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ayuda de la función setwd()</span>
-
 <span class='op'>?</span><span class='va'>setwd</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/help.html'>help</a></span><span class='op'>(</span><span class='va'>setwd</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>También puede obtenerse ayuda sobre una función en los buscadores de Internet (ej. Google), además de ejemplos y otros materiales de apoyo. El sitio <a href="https://www.rdocumentation.org/">R Documentation and manuals - R Documentation</a> reúne la documentación de las funciones de R.</p>
+<p>Adicionalmente, puede utilizarse la función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/help">apropos()</a> para buscar funciones por palabras clave.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Búsqueda, por palabras clave, de funciones relacionadas con "mean" (media aritmética). Note las comillas ("").</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/apropos.html'>apropos</a></span><span class='op'>(</span><span class='st'>"mean"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;.colMeans&quot;     &quot;.rowMeans&quot;     &quot;colMeans&quot;      &quot;kmeans&quot;       
+ [5] &quot;mean&quot;          &quot;mean.Date&quot;     &quot;mean.default&quot;  &quot;mean.difftime&quot;
+ [9] &quot;mean.POSIXct&quot;  &quot;mean.POSIXlt&quot;  &quot;rowMeans&quot;      &quot;weighted.mean&quot;</code></pre>
+</div>
+<p>La función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/example">example()</a> presenta ejemplos sobre el uso de una función.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ejemplos de uso de la función mean()</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/example.html'>example</a></span><span class='op'>(</span><span class='st'>"mean"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+mean&gt; x &lt;- c(0:10, 50)
+
+mean&gt; xm &lt;- mean(x)
+
+mean&gt; c(xm, mean(x, trim = 0.10))
+[1] 8.75 5.50</code></pre>
+</div>
+<p>Por otra parte, los sitios <a href="https://www.rdocumentation.org/">R Documentation and manuals - R Documentation</a> y <a href="https://rdrr.io/r/">All R Documentation</a> reúnen documentación de las funciones de R. También puede obtenerse ayuda sobre una función en los buscadores de Internet (ej. Google), además de ejemplos, tutoriales y otros materiales de apoyo.</p>
 <h3 id="bibliotecas-y-paquetes">Bibliotecas y paquetes</h3>
-<p>Las funciones de R se agrupan en conjuntos llamados bibliotecas, las cuales se distribuyen en <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">paquetes</a>. Para utilizar un paquete, este debe cargarse (en la memoria del computador) primero con la función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/library">library()</a>.</p>
+<p>Las funciones de R se agrupan en conjuntos llamados bibliotecas, las cuales se distribuyen en paquetes. Para utilizar un paquete, primero debe cargarse (en la memoria del computador) con la función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/library">library()</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga del paquete stats</span>
-
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>stats</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2212,14 +2247,13 @@ Interfaz de RStudio.
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Instalación del paquete dplyr</span>
-
 <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"dplyr"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <h2 id="tipos-de-datos">Tipos de datos</h2>
 <p>R puede trabajar con varios <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types">tipos de datos básicos</a>, entre los que están números, carácteres (i.e. textos) y lógicos. También puede trabajar con <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-compound-objects">tipos compuestos</a>, como factores y <em>data frames</em>.</p>
-<p>R proporciona acceso a los datos a través de objetos. Un objeto es una entidad que tiene asociadas propiedades y métodos para manipular esas propiedades. Un objeto puede ser, por ejemplo, un número, una hilera de texto, un vector o una matriz.</p>
+<p>R proporciona acceso a los datos a través de objetos. Un objeto es una entidad que tiene asociadas propiedades (i.e. datos) y métodos (i.e. funciones) para manipular esas propiedades. Un objeto puede ser, por ejemplo, un número, una hilera de texto, un vector o una matriz.</p>
 <p>Hay muchas formas de crear objetos en R. Una de las más sencillas es con los operadores de asignación. Estos son <code>=</code> y <code>&lt;-</code> (o <code>-&gt;</code>). Por ejemplo, las siguientes sentencias crean un número, un texto y un vector.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2737,7 +2771,7 @@ Mario   25    1000</code></pre>
 7  BLZ       0.3
 8  DOM      10.6</code></pre>
 </div>
-<h4 id="indexación-2">Indexación</h4>
+<h5 id="indexación-2">Indexación</h5>
 <p>Los datos de un data frame pueden accederse principalmente de dos formas. La primera es mediante la misma sintaxis <code>[fila, columna]</code> que se utiliza en las matrices.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2804,7 +2838,7 @@ Mario   25    1000</code></pre>
 7  BLZ       0.6
 8  DOM      21.2</code></pre>
 </div>
-<h4 id="operaciones-2">Operaciones</h4>
+<h5 id="operaciones-2">Operaciones</h5>
 <p>R proporciona una gran variedad de funciones para manejar data frames. Las siguientes son algunas de las más utilizadas.</p>
 La función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table">read.table()</a> lee los datos contenidos en un archivo de texto y los retorna en un data frame. <code>read.csv()</code> es una función derivada, con valores por defecto orientados a los archivos de valores separados por comas (CSV, <em>Comma Separated Values</em>).
 <div class="layout-chunk" data-layout="l-body">
@@ -2915,7 +2949,7 @@ La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2
 <pre><code>Time difference of 30 days</code></pre>
 </div>
 <p>Hay una lista de formatos de fechas en <a href="https://www.r-bloggers.com/date-formats-in-r/">Date Formats in R - R-bloggers</a>.</p>
-<h2 id="conjuntos-de-datos-para-pruebas">Conjuntos de datos para pruebas</h2>
+<h1 id="conjuntos-de-datos-para-pruebas">Conjuntos de datos para pruebas</h1>
 <p>Para efectos de pruebas y ejemplos, el interpretador de R incorpora varios conjuntos de datos en la forma de data frames que pueden listarse con la función <code>data()</code>. Para consultar un conjunto en particular, puede utilizarse el operador <code>?</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2927,7 +2961,7 @@ La función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2
 </code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

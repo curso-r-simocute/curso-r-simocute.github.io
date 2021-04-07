@@ -3,7 +3,7 @@ title: "Introducción a R"
 output: 
   distill::distill_article:
     toc: true
-    toc_depth: 3
+    toc_depth: 4
 ---
 
 ```{r setup, include=FALSE}
@@ -37,15 +37,16 @@ Para programar en R, puede utilizarse una interfaz de línea de comandos y tambi
 Además de edición de código fuente en R (y otros lenguajes), RStudio contiene capacidades para depurar código y visualizar datos en formatos tabulares, gráficos y de mapas.
 
 # El lenguaje R
+En esta sección, se explican algunos de los aspectos principales de la [definición del lenguaje R](https://cran.r-project.org/doc/manuals/r-release/R-lang.html). Específicamente, el concepto de función y los tipos de datos que maneja R.
+
 ## Funciones
-R, al igual que otros lenguajes de programación, estructura su funcionalidad en segmentos de [código fuente](https://en.wikipedia.org/wiki/Source_code) llamados [funciones](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions). Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático. Todas las funciones tienen un nombre y un conjunto de parámetros que especifican los datos de entrada que procesa la función. Los parámetros se escriben entre paréntesis redondos (```()```) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún parámetro. Si la función tiene varios parámetros, deben separarse mediante comas (```,```).
+R, al igual que otros lenguajes de programación, estructura su funcionalidad en unidades de [código fuente](https://en.wikipedia.org/wiki/Source_code) llamados [funciones](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions). Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático. Todas las funciones tienen un nombre y un conjunto de parámetros que especifican los datos de entrada que procesa la función. Los parámetros se escriben entre paréntesis redondos (```()```) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún parámetro. Si la función tiene varios parámetros, deben separarse mediante comas (```,```).
 
 ### Ejemplos
 Por ejemplo, la función [print()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/print) recibe como parámetro un valor (ej. un texto o un número) para imprimirlo en la pantalla. En el siguiente fragmento de código en R, se utiliza ```print()``` para imprimir la hilera ["Hola mundo"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program). Nótese el uso del símbolo ```#``` para comentarios (i.e. texto que no es código ejecutable).
 
 ```{r collapse=TRUE}
 # Impresión de una hilera de carácteres
-
 print("Hola mundo")
 ```
 
@@ -60,7 +61,6 @@ La función [getwd()](https://www.rdocumentation.org/packages/base/versions/3.6.
 
 ```{r collapse=TRUE}
 # Impresión del directorio de trabajo
-
 getwd()
 ```
 
@@ -68,16 +68,14 @@ La función ```setwd()``` (_set working directory_) establece la ruta del direct
 
 ```{r eval=FALSE}
 # Definición del directorio de trabajo (la ruta debe existir)
-
 setwd("C:/Users/mfvargas")
 ```
 
 ### Parámetros
-Los parámetros de las funciones tienen nombres que pueden especificarse en caso de ser necesario. En el siguiente ejemplo, se utilizan los nombres de los parámetros ```x```, ```xlab``` y ```ylab``` de la función [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot) para especificar la fuente de datos y las etiquetas de los ejes x e y de un gráfico.
+Los parámetros de las funciones tienen nombres que pueden especificarse, en caso de ser necesario. En el siguiente ejemplo, se utilizan los nombres de los parámetros ```x```, ```xlab``` y ```ylab``` de la función [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot) para especificar la fuente de datos y las etiquetas de los ejes x e y de un gráfico.
 
 ```{r collapse=TRUE}
 # Gráfico con etiquetas en los ejes x e y del conjunto de datos "cars"
-
 plot(
   x=cars, 
   xlab="Velocidad", 
@@ -86,22 +84,35 @@ plot(
 ```
 
 ### Ayuda sobre funciones
-Para obtener ayuda de una función desde la línea de comandos de R, puede utilizarse un signo de pregunta (```?```) seguido del nombre de la función. Por ejemplo:
+Para obtener ayuda de una función desde la línea de comandos de R, puede utilizarse un signo de pregunta (```?```) seguido del nombre de la función o bien la función [help()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/help). Por ejemplo:
 
 ```{r eval=FALSE}
 # Ayuda de la función setwd()
-
 ?setwd
+help(setwd)
 ```
 
-También puede obtenerse ayuda sobre una función en los buscadores de Internet (ej. Google), además de ejemplos y otros materiales de apoyo. El sitio [R Documentation and manuals - R Documentation](https://www.rdocumentation.org/) reúne la documentación de las funciones de R.
+Adicionalmente, puede utilizarse la función [apropos()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/help) para buscar funciones por palabras clave.
+
+```{r eval=TRUE}
+# Búsqueda, por palabras clave, de funciones relacionadas con "mean" (media aritmética). Note las comillas ("").
+apropos("mean")
+```
+
+La función [example()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/example) presenta ejemplos sobre el uso de una función.
+
+```{r eval=TRUE}
+# Ejemplos de uso de la función mean()
+example("mean")
+```
+
+Por otra parte, los sitios [R Documentation and manuals - R Documentation](https://www.rdocumentation.org/) y [All R Documentation](https://rdrr.io/r/) reúnen documentación de las funciones de R. También puede obtenerse ayuda sobre una función en los buscadores de Internet (ej. Google), además de ejemplos, tutoriales y otros materiales de apoyo. 
 
 ### Bibliotecas y paquetes
-Las funciones de R se agrupan en conjuntos llamados bibliotecas, las cuales se distribuyen en [paquetes](https://cran.r-project.org/web/packages/available_packages_by_name.html). Para utilizar un paquete, este debe cargarse (en la memoria del computador) primero con la función [library()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/library).
+Las funciones de R se agrupan en conjuntos llamados bibliotecas, las cuales se distribuyen en paquetes. Para utilizar un paquete, primero debe cargarse (en la memoria del computador) con la función [library()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/library).
 
 ```{r}
 # Carga del paquete stats
-
 library(stats)
 ```
 
@@ -109,14 +120,13 @@ Algunos paquetes están contenidos en la distribución base de R y otros deben i
 
 ```{r eval=FALSE}
 # Instalación del paquete dplyr
-
 install.packages("dplyr")
 ```
 
 ## Tipos de datos
 R puede trabajar con varios [tipos de datos básicos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types), entre los que están números, carácteres (i.e. textos) y lógicos. También puede trabajar con [tipos compuestos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-compound-objects), como factores y _data frames_.
 
-R proporciona acceso a los datos a través de objetos. Un objeto es una entidad que tiene asociadas propiedades y métodos para manipular esas propiedades. Un objeto puede ser, por ejemplo, un número, una hilera de texto, un vector o una matriz.
+R proporciona acceso a los datos a través de objetos. Un objeto es una entidad que tiene asociadas propiedades (i.e. datos) y métodos (i.e. funciones) para manipular esas propiedades. Un objeto puede ser, por ejemplo, un número, una hilera de texto, un vector o una matriz.
 
 Hay muchas formas de crear objetos en R. Una de las más sencillas es con los operadores de asignación. Estos son ```=``` y ```<-``` (o ```->```). Por ejemplo, las siguientes sentencias crean un número, un texto y un vector.
 
@@ -433,7 +443,7 @@ poblaciones_paises <-
 poblaciones_paises
 ```
 
-#### Indexación
+##### Indexación
 Los datos de un data frame pueden accederse principalmente de dos formas. La primera es mediante la misma sintaxis ```[fila, columna]``` que se utiliza en las matrices.
 
 ```{r collapse=TRUE}
@@ -464,7 +474,7 @@ poblaciones_paises$poblacion = poblaciones_paises$poblacion*2
 poblaciones_paises
 ```
 
-#### Operaciones
+##### Operaciones
 R proporciona una gran variedad de funciones para manejar data frames. Las siguientes son algunas de las más utilizadas.
 
 La función [read.table()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table) lee los datos contenidos en un archivo de texto y los retorna en un data frame. ```read.csv()``` es una función derivada, con valores por defecto orientados a los archivos de valores separados por comas (CSV, _Comma Separated Values_).
@@ -529,7 +539,7 @@ fecha_02 - fecha_01
 ```
 Hay una lista de formatos de fechas en [Date Formats in R - R-bloggers](https://www.r-bloggers.com/date-formats-in-r/).
 
-## Conjuntos de datos para pruebas
+# Conjuntos de datos para pruebas
 Para efectos de pruebas y ejemplos, el interpretador de R incorpora varios conjuntos de datos en la forma de data frames que pueden listarse con la función ```data()```. Para consultar un conjunto en particular, puede utilizarse el operador  ```? ```.
 
 ```{r eval=FALSE}
