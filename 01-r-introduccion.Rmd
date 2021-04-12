@@ -66,9 +66,14 @@ getwd()
 
 La función ```setwd()``` (_set working directory_) establece la ruta del directorio de trabajo de la sesión actual de R. Como parámetro, recibe una hilera de texto con la ruta.
 
+**Note las barras utilizadas para separar los subdirectorios: /**
+
 ```{r eval=FALSE}
 # Definición del directorio de trabajo (la ruta debe existir)
 setwd("C:/Users/mfvargas")
+
+# Directorio con espacios, tildes y eñes
+setwd("C:/Users/mfvargas/mi directorio con espacios y tildes áéíóúñ")
 ```
 
 ### Parámetros

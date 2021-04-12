@@ -2176,10 +2176,14 @@ Interfaz de RStudio.
 <pre><code>[1] &quot;C:/Users/mfvargas/curso-r-simocute/curso-r-simocute.github.io&quot;</code></pre>
 </div>
 <p>La función <code>setwd()</code> (<em>set working directory</em>) establece la ruta del directorio de trabajo de la sesión actual de R. Como parámetro, recibe una hilera de texto con la ruta.</p>
+<p><strong>Note las barras utilizadas para separar los subdirectorios: /</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Definición del directorio de trabajo (la ruta debe existir)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"C:/Users/mfvargas"</span><span class='op'>)</span>
+
+<span class='co'># Directorio con espacios, tildes y eñes</span>
+<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"C:/Users/mfvargas/mi directorio con espacios y tildes áéíóúñ"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2905,7 +2909,7 @@ Mario   25    1000</code></pre>
 <span class='va'>fecha_actual</span>
 </code></pre>
 </div>
-<pre><code>[1] &quot;2021-04-06&quot;</code></pre>
+<pre><code>[1] &quot;2021-04-11&quot;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class='co'># Tipo de datos</span>
