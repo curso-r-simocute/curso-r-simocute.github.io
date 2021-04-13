@@ -40,17 +40,17 @@ Además de edición de código fuente en R (y otros lenguajes), RStudio contiene
 En esta sección, se explican algunos de los aspectos principales de la [definición del lenguaje R](https://cran.r-project.org/doc/manuals/r-release/R-lang.html). Específicamente, el concepto de función y los tipos de datos que maneja R.
 
 ## Funciones
-R, al igual que otros lenguajes de programación, estructura su funcionalidad en unidades de [código fuente](https://en.wikipedia.org/wiki/Source_code) llamados [funciones](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions). Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático. Todas las funciones tienen un nombre y un conjunto de parámetros que especifican los datos de entrada que procesa la función. Los parámetros se escriben entre paréntesis redondos (```()```) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún parámetro. Si la función tiene varios parámetros, deben separarse mediante comas (```,```).
+R, al igual que otros lenguajes de programación, estructura su funcionalidad en unidades de [código fuente](https://en.wikipedia.org/wiki/Source_code) llamadas [funciones](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions). Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático y, por lo general, retorna un valor como salida. Todas las funciones tienen un nombre y un conjunto de argumentos que especifican los datos de entrada que procesa la función. Los argumentos se escriben entre paréntesis redondos (```()```) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún argumento. Si la función tiene varios argumentos, deben separarse mediante comas (```,```).
 
 ### Ejemplos
-Por ejemplo, la función [print()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/print) recibe como parámetro un valor (ej. un texto o un número) para imprimirlo en la pantalla. En el siguiente fragmento de código en R, se utiliza ```print()``` para imprimir la hilera ["Hola mundo"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program). Nótese el uso del símbolo ```#``` para comentarios (i.e. texto que no es código ejecutable).
+La función [print()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/print) recibe como argumento un valor (ej. un texto o un número) para imprimirlo en la pantalla. En el siguiente fragmento de código en R, se utiliza ```print()``` para imprimir la hilera ["Hola mundo"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program). Nótese el uso del símbolo ```#``` para comentarios (i.e. texto que no es código ejecutable).
 
 ```{r collapse=TRUE}
 # Impresión de una hilera de carácteres
 print("Hola mundo")
 ```
 
-En otro ejemplo, la función  [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) retorna la media aritmética del parámetro de entrada. En el siguiente ejemplo, se calcula la media de los números de un vector creado a su vez con la función [c()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/c).
+En otro ejemplo, la función  [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) retorna la media aritmética del argumento de entrada. En el siguiente ejemplo, se calcula la media de los números de un vector creado a su vez con la función [c()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/c).
 
 ```{r collapse=TRUE}
 # Media aritmética
@@ -64,9 +64,9 @@ La función [getwd()](https://www.rdocumentation.org/packages/base/versions/3.6.
 getwd()
 ```
 
-La función ```setwd()``` (_set working directory_) establece la ruta del directorio de trabajo de la sesión actual de R. Como parámetro, recibe una hilera de texto con la ruta.
+La función ```setwd()``` (_set working directory_) establece la ruta del directorio de trabajo de la sesión actual de R. Como argumento, recibe una hilera de texto con la ruta.
 
-**Note las barras utilizadas para separar los subdirectorios: /**
+**Note las barras utilizadas para separar los subdirectorios: / (no \\)**
 
 ```{r eval=FALSE}
 # Definición del directorio de trabajo (la ruta debe existir)
@@ -76,17 +76,29 @@ setwd("C:/Users/mfvargas")
 setwd("C:/Users/mfvargas/mi directorio con espacios y tildes áéíóúñ")
 ```
 
-### Parámetros
-Los parámetros de las funciones tienen nombres que pueden especificarse, en caso de ser necesario. En el siguiente ejemplo, se utilizan los nombres de los parámetros ```x```, ```xlab``` y ```ylab``` de la función [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot) para especificar la fuente de datos y las etiquetas de los ejes x e y de un gráfico.
+**
+Ejercicio 01:  
+a. Obtenga la ruta de su directorio de trabajo con la función ```getwd()```.  
+b. Si lo desea, cambie la ruta de su directorio de trabajo con la función ```setwd()```. Verifique el cambio con ```getwd()```.  
+**
+
+### Argumentos
+Los argumentos de las funciones tienen nombres que pueden especificarse, en caso de ser necesario. En el siguiente ejemplo, se utilizan los nombres de los argumentos ```x```, ```xlab``` y ```ylab``` de la función [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot) para especificar la fuente de datos y las etiquetas de los ejes x e y de un gráfico.
 
 ```{r collapse=TRUE}
 # Gráfico con etiquetas en los ejes x e y del conjunto de datos "cars"
 plot(
   x=cars, 
-  xlab="Velocidad", 
-  ylab="Distancia"
+  xlab="Velocidad (mph)", 
+  ylab="Distancia requerida para frenar (pies)"
 )
 ```
+
+**
+Ejercicio 02: estudie la documentación de la función ```plot()``` y agregue al gráfico anterior:  
+a. Un título.  
+b. Un subtítulo.  
+**
 
 ### Ayuda sobre funciones
 Para obtener ayuda de una función desde la línea de comandos de R, puede utilizarse un signo de pregunta (```?```) seguido del nombre de la función o bien la función [help()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/help). Por ejemplo:
@@ -124,7 +136,7 @@ library(stats)
 Algunos paquetes están contenidos en la distribución base de R y otros deben instalarse de manera separada con la función [install.packages()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/install.packages).
 
 ```{r eval=FALSE}
-# Instalación del paquete dplyr
+# Instalación del paquete dplyr (note las comillas)
 install.packages("dplyr")
 ```
 
@@ -278,7 +290,7 @@ vector_secuencia <- -0.5:3.7
 vector_secuencia
 ```
 
-La función [seq()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/seq) también crea un vector con base en una secuencia y permite especificar parámetros como un valor de incremento y la longitud de la secuencia.
+La función [seq()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/seq) también crea un vector con base en una secuencia y permite especificar argumentos como un valor de incremento y la longitud de la secuencia.
 
 ```{r collapse=TRUE}
 # Definición de un vector de números con la secuencia de 1 a 10
@@ -482,7 +494,7 @@ poblaciones_paises
 ##### Operaciones
 R proporciona una gran variedad de funciones para manejar data frames. Las siguientes son algunas de las más utilizadas.
 
-La función [read.table()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table) lee los datos contenidos en un archivo de texto y los retorna en un data frame. ```read.csv()``` es una función derivada, con valores por defecto orientados a los archivos de valores separados por comas (CSV, _Comma Separated Values_). Como parámetro principal, ```read.csv()``` recibe la ruta del archivo CSV, el cual puede encontrarse en un disco local, en la Web o en otra ubicación.
+La función [read.table()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table) lee los datos contenidos en un archivo de texto y los retorna en un data frame. ```read.csv()``` es una función derivada, con valores por defecto orientados a los archivos de valores separados por comas (CSV, _Comma Separated Values_). Como argumento principal, ```read.csv()``` recibe la ruta del archivo CSV, el cual puede encontrarse en un disco local, en la Web o en otra ubicación.
 
 ```{r collapse=TRUE}
 # Lectura de archivo CSV ubicado en la Web
@@ -490,7 +502,10 @@ casos_covid19_ca <- read.csv("https://raw.githubusercontent.com/curso-r-simocute
 
 casos_covid19_ca
 ```
-**Ejercicio**: descargue el archivo del ejemplo anterior (https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/covid-card.csv) en su computadora y cárguelo en otro data frame mediante ```read.csv()```.
+**
+Ejercicio 03:  
+a. Descargue el archivo del ejemplo anterior (https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/covid-card.csv) en su computadora y cárguelo en otro data frame mediante ```read.csv()```.
+**
 
 La función [str()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/str) despliega la estructura de un objeto R.
 
