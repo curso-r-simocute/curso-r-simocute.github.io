@@ -10,7 +10,19 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Características generales
+# Recursos de interés
+* Sitio oficial de R: [The R Project for Statistical Computing](https://www.r-project.org/).
+* Sitio oficial de RStudio: [RStudio - Open source & professional software for data sciencie teams](https://www.rstudio.com/).
+
+* Documentación y manuales de R: [R Documentation and manuals - R Documentation](https://www.rdocumentation.org/).
+* Documentación de paquetes y funciones de R: [R Package Documentation](https://rdrr.io/).
+
+* Guía de instalación de paquetes de R: [R Packages: A Beginner's Guide](https://www.datacamp.com/community/tutorials/r-packages-guide?utm_source=adwords_ppc&utm_campaignid=1455363063&utm_adgroupid=65083631748&utm_device=c&utm_keyword=&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=278443377092&utm_targetid=aud-299261629574:dsa-473406586795&utm_loc_interest_ms=&utm_loc_physical_ms=9070296&gclid=CjwKCAjw-YT1BRAFEiwAd2WRtpTaL0eK8LpX_AMhsunLAyrx0ohDAofj8BLIyIbPxdpkDPUSvp202xoCEIAQAvD_BwE).
+* Video sobre instalación de paquetes en R: [How to install packages in R and RStudio?](https://www.youtube.com/watch?v=JBcVi-fAT_k).
+
+* Datos utilizados durante el curso: [Procesamiento de datos con R - datos](https://github.com/curso-r-simocute/datos).
+
+# Características generales de R
 [R](https://www.r-project.org/) es un lenguaje de programación enfocado en análisis estadístico. Es ampliamente utilizado en diversas áreas de investigación, entre las que pueden mencionarse [aprendizaje automático (_machine learning_)](https://en.wikipedia.org/wiki/Machine_learning), [ciencia de datos (_data science_)](https://en.wikipedia.org/wiki/Data_science) y [_big data_](https://en.wikipedia.org/wiki/Big_data), con aplicaciones en campos como biomedicina, bioinformática y finanzas, entre muchos otros. Fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, en 1993.
 
 Algunas de las principales características de este lenguaje son:

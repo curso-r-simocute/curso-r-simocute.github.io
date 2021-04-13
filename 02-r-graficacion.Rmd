@@ -10,7 +10,15 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Graficación
+## Recursos de interés
+- Sitio oficial de graphics: [The R Graphics Package](http://search.r-project.org/R/library/graphics/html/graphics-package.html).
+- Sitio oficial de dplyr: [A Grammar of Data Manipulation - dplyr](https://dplyr.tidyverse.org/).
+- Sitio oficial de ggplot2: [Create Elegant Data Visualisations Using the Grammar of Graphics - ggplot2](https://ggplot2.tidyverse.org/).
 
+* Libro [_R Graphics Cookbook_, de Winston Chang](https://r-graphics.org/).
+* Libro [_The Grammar of Graphics_, de Leland Wilkinson et al.](https://www.springer.com/gp/book/9780387245447).
+* Sitio web sobre visualización de datos: [From data to Viz | Find the graphic you need](https://www.data-to-viz.com/).
+
+* Datos utilizados durante el curso: [Procesamiento de datos con R - datos](https://github.com/curso-r-simocute/datos).
 
 
