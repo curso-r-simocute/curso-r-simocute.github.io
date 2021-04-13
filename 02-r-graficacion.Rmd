@@ -165,3 +165,145 @@ ggplot(cr_covid19, aes(x = FECHA, y = positivos)) +
 ```
 
 La manera usual de usar ```ggplot()``` es con un data frame como argumento, especificando cuales columnas usar como valores de x e y. La primera parte, ```ggplot()```, crea la base del gráfico (i.e. el canvas), mientras que [geom_point()](https://ggplot2.tidyverse.org/reference/geom_point.html) agrega una capa adicional, lo mismo que [ggtitle()](https://ggplot2.tidyverse.org/reference/labs.html) y las funciones restantes.
+
+**
+Ejercicio 01:  
+a. Modifique el gráfico anterior para mostrar los casos confirmados en el eje y.  
+**
+
+## Gráficos de líneas
+Un [gráfico de líneas (_line graph_ o _line chart_)](https://www.data-to-viz.com/graph/line.html) muestra la evolución de una o varias variables numéricas. Los puntos de datos se conectan mediante segmentos de líneas rectas. Los gráficos de líneas son usados frecuentemente para visualizar tendencias de los datos en intervalos de tiempo (i.e. en series temporales).
+
+Puede hacerse un gráfico de líneas con la función ```plot()``` al pasarle como argumento ```type="l"```.
+
+```{r}
+# Gráfico de líneas
+plot(
+  cr_covid19$FECHA, 
+  cr_covid19$positivos,
+  main='Evolución en el tiempo de los casos positivos de COVID-19 en CR',
+  xlab='Fecha',
+  ylab='Casos positivos',
+  type="l"
+)
+```
+
+Si se desea agregar más líneas, o series de puntos, debe entonces llamarse a ```plot()``` para la primera variable (ej. la primera línea) y luego agregar las restantes series de líneas o de puntos con las funciones [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/lines) y [points()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/points).
+
+```{r}
+# Gráfico de línea de casos positivos
+plot(
+  cr_covid19$FECHA, 
+  cr_covid19$positivos,
+  main='Evolución en el tiempo de los casos de COVID-19 en CR',
+  xlab='Fecha',
+  ylab='Casos',
+  type="l",
+  col="blue"
+)
+
+# Casos activos
+lines(cr_covid19$FECHA, cr_covid19$activos, col="red")
+
+# Casos recuperados
+lines(cr_covid19$FECHA, cr_covid19$RECUPERADOS, col="green")
+
+# Casos fallecidos
+lines(cr_covid19$FECHA, cr_covid19$fallecidos, col="violet")
+```
+
+Con las funciones de ggplot2 puede conseguirse un resultado similar al crear el gráfico base con ```ggplot()``` y agregar las series de líneas y puntos con [geom_line()](https://ggplot2.tidyverse.org/reference/geom_path.html) y [geom_point()](https://ggplot2.tidyverse.org/reference/geom_point.html).
+
+```{r warning=FALSE}
+# Gráfico de líneas de casos de COVID-19 en Costa Rica
+ggplot(cr_covid19, aes(x=FECHA)) + 
+  ggtitle("Evolución en el tiempo de los casos de COVID-19 en CR") +
+  xlab("Fecha") + 
+  ylab("Casos") +
+  geom_line(aes(y = positivos), color = "blue") +
+  geom_point(aes(y = positivos), color = "blue") + 
+  geom_line(aes(y = activos), color = "red") +
+  geom_point(aes(y = activos), color = "red") +   
+  geom_line(aes(y = RECUPERADOS), color="green") +
+  geom_point(aes(y = RECUPERADOS), color = "green") +
+  geom_line(aes(y = fallecidos), color="violet") +
+  geom_point(aes(y = fallecidos), color = "violet")  
+```
+
+**
+Ejercicio 02:  
+a. Modifique el gráfico anterior y aumente el tamaño de los puntos.  
+**
+
+Versión del gráfico en plotly:
+
+```{r warning=FALSE}
+# Gráfico de líneas de casos de COVID-19 en Costa Rica
+plot_ly(data = cr_covid19,
+                x = ~ FECHA,
+                y = ~ positivos, 
+                name = 'Positivos', 
+                type = 'scatter',
+                mode = 'lines',
+                line = list(color = "blue")) %>%
+  add_trace(y = ~ activos,
+                    name = 'Activos',
+                    mode = 'lines',
+                    line = list(color = "red")) %>%
+  add_trace(y = ~ RECUPERADOS,
+                    name = 'Recuperados',
+                    mode = 'lines',
+                    line = list(color = "green")) %>%
+  add_trace(y = ~ fallecidos,
+                    name = 'Fallecidos',
+                    mode = 'lines',
+                    line = list(color = "violet")) %>%  
+  layout(title = "",
+                 yaxis = list(title = "Cantidad de casos"),
+                 xaxis = list(title = "Fecha"),
+                 legend = list(x = 0.1, y = 0.9),
+                 hovermode = "compare")
+```
+
+**
+Ejercicio 03:  
+a. Modifique el gráfico anterior y muestre las etiquetas de los controles en español.  
+**
+
+## Gráficos de barras
+Los [gráficos de barras (_barcharts_ o _barplots_)](https://www.data-to-viz.com/graph/barplot.html) muestran la relación entre una variable categórica y una variable numérica. Cada entidad de la variable categórica es representada mediante una barra, en la que su altura representa el valor correspondiente de la variable numérica.
+
+Para los ejemplos de esta sección, se utilizará el conjunto de datos de casos de COVID-19 de Centroamérica y República Dominicana. Para facilitar su visualización, se ordenan los registros de acuerdo con la columna de casos confirmados, mediante la función [order()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/order).
+
+```{r}
+# Ordenar de mayor a menor
+ca_positivos.ordenado <- order(ca_covid19$positivos, decreasing=TRUE)
+
+# Nuevo data frame ordenado
+ca_covid19.positivos <- ca_covid19[ca_positivos.ordenado,]
+```
+
+La función [barplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot), del paquete graphics, se utiliza en el siguiente ejemplo para generar un gráfico de barras de los casos confirmados.
+
+```{r}
+barplot(
+  height=ca_covid19.positivos$positivos, 
+  names.arg=ca_covid19.positivos$pais, 
+  xlab="País", 
+  ylab="Casos positivos", 
+  main="Casos positivos de COVID-19 en Centroamérica y DOM"
+)
+```
+
+La función [geom_col()](https://ggplot2.tidyverse.org/reference/geom_bar.html), en combinación con ```ggplot()```, puede utilizarse para generar gráficos de barras.
+
+```{r}
+ggplot(ca_covid19, aes(x=reorder(pais, -positivos), y=positivos)) +
+  ggtitle("Casos positivos de COVID-19 en Centroamérica y DOM") +
+  xlab("País") + 
+  ylab("Casos positivos") +  
+  geom_col() +
+  geom_text(aes(label=positivos), vjust=-0.3, size=3.5)
+```
+
+Note el uso de la función [reorder()](https://www.r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html) en el ejemplo anterior, para ordenar el orden de las barras (i.e. los países) en el eje X y el de  [geom_text()](https://ggplot2.tidyverse.org/reference/geom_text.html) para desplegar etiquetas sobre las barras.
