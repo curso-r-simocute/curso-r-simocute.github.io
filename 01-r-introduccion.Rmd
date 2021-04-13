@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Recursos de interés
 * Sitio oficial de R: [The R Project for Statistical Computing](https://www.r-project.org/).
-* Sitio oficial de RStudio: [RStudio - Open source & professional software for data sciencie teams](https://www.rstudio.com/).
+* Sitio oficial de RStudio: [RStudio - Open source & professional software for data science teams](https://www.rstudio.com/).
 
 * Documentación y manuales de R: [R Documentation and manuals - R Documentation](https://www.rdocumentation.org/).
 * Documentación de paquetes y funciones de R: [R Package Documentation](https://rdrr.io/).

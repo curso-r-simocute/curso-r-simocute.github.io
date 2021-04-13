@@ -2089,19 +2089,186 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3>Contents</h3>
 <ul>
 <li><a href="#recursos-de-interés">Recursos de interés</a></li>
+<li><a href="#trabajo-previo">Trabajo previo</a></li>
+<li><a href="#conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</a></li>
+<li><a href="#paquetes-de-r-para-graficación">Paquetes de R para graficación</a>
+<ul>
+<li><a href="#instalación-carga-y-ayuda">Instalación, carga y ayuda</a></li>
+</ul></li>
+<li><a href="#tipos-de-gráficos">Tipos de gráficos</a>
+<ul>
+<li><a href="#gráficos-de-dispersión">Gráficos de dispersión</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
-<h2 id="recursos-de-interés">Recursos de interés</h2>
+<h1 id="recursos-de-interés">Recursos de interés</h1>
 <ul>
 <li><p>Sitio oficial de graphics: <a href="http://search.r-project.org/R/library/graphics/html/graphics-package.html">The R Graphics Package</a>.</p></li>
-<li><p>Sitio oficial de dplyr: <a href="https://dplyr.tidyverse.org/">A Grammar of Data Manipulation - dplyr</a>.</p></li>
 <li><p>Sitio oficial de ggplot2: <a href="https://ggplot2.tidyverse.org/">Create Elegant Data Visualisations Using the Grammar of Graphics - ggplot2</a>.</p></li>
+<li><p>Sitio oficial de plotly: <a href="https://plotly.com/">Plotly: The front end for ML and data science models</a></p></li>
+<li><p>Sitio oficial de dplyr: <a href="https://dplyr.tidyverse.org/">A Grammar of Data Manipulation - dplyr</a>.</p></li>
 <li><p>Libro <a href="https://r-graphics.org/"><em>R Graphics Cookbook</em>, de Winston Chang</a>.</p></li>
 <li><p>Libro <a href="https://www.springer.com/gp/book/9780387245447"><em>The Grammar of Graphics</em>, de Leland Wilkinson et al.</a>.</p></li>
 <li><p>Sitio web sobre visualización de datos: <a href="https://www.data-to-viz.com/">From data to Viz | Find the graphic you need</a>.</p></li>
 <li><p>Datos utilizados durante el curso: <a href="https://github.com/curso-r-simocute/datos">Procesamiento de datos con R - datos</a>.</p></li>
 </ul>
+<h1 id="trabajo-previo">Trabajo previo</h1>
+<p>Se recomienda leer el <a href="https://r-graphics.org/chapter-quick">capítulo 2 del libro <em>R Graphics Cookbook</em>, de Winston Chang</a>.</p>
+<h1 id="conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</h1>
+<p>En los siguientes ejemplos y ejercicios, se utilizarán dos conjuntos de datos, los cuales se cargan en data frames con la función <a href="https://www.rdocumentation.org/packages/iotools/versions/0.3-1/topics/read.csv.raw">read.csv()</a> y se visualizan con la función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/View">View()</a>.</p>
+<p><strong>Casos de COVID-19 en Costa Rica</strong><br />
+Este conjunto de datos publicados por el <a href="http://geovision.uned.ac.cr/oges/">Ministerio de Salud de Costa Rica</a> es un ejemplo de una <a href="https://en.wikipedia.org/wiki/Time_series">serie temporal</a>: una sucesión de datos medidos en determinados momentos y ordenados cronológicamente. Contiene un registro por día con las estadísticas de casos positivos, fallecidos, activos y recuperados.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de datos desde un archivo CSV</span>
+<span class='va'>cr_covid19</span> <span class='op'>&lt;-</span> 
+  <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
+    file<span class='op'>=</span><span class='st'>'https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/04_09_21_CSV_GENERAL.csv'</span>, 
+    sep <span class='op'>=</span> <span class='st'>";"</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Despliegue de los datos</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>cr_covid19</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p><strong>Casos de COVID-19 en Centroamérica y República Dominicana</strong><br />
+Este conjunto de datos publicados por el <a href="http://www.cepredenac.org/">Centro de Coordinación para la Prevención de los Desastres en Centroamérica y República Dominicana (Cepredenac)</a> tiene un registro por país con los casos (positivos, fallecidos, activos, recuperados) acumulados hasta la fecha en cada uno.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de datos desde un archivo CSV</span>
+<span class='va'>ca_covid19</span> <span class='op'>&lt;-</span> 
+  <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
+    file<span class='op'>=</span><span class='st'>'https://raw.githubusercontent.com/curso-r-simocute/datos/main/covid/covid-card.csv'</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Despliegue de los datos</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>ca_covid19</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="paquetes-de-r-para-graficación">Paquetes de R para graficación</h1>
+<p>R provee varios paquetes para generar gráficos. Aquí se estudiarán tres:</p>
+<ul>
+<li><a href="http://search.r-project.org/R/library/graphics/html/graphics-package.html">graphics</a>: es un paquete para gráficos relativamente sencillos y forma parte de la instalación base de R.</li>
+<li><a href="https://ggplot2.tidyverse.org/">ggplot2</a>: es parte de <a href="https://www.tidyverse.org/">Tidyverse</a>, una colección de paquetes de R diseñada para utilizarse en <a href="https://en.wikipedia.org/wiki/Data_science">ciencia de datos</a>. Este paquete está basado en el libro <a href="https://www.springer.com/gp/book/9780387245447"><em>The Grammar of Graphics</em>, de Leland Wilkinson et al.</a>.</li>
+<li><a href="https://plotly.com/">plotly</a>: biblioteca de graficación disponible para JavaScript, Python, R y Julia.</li>
+</ul>
+<h2 id="instalación-carga-y-ayuda">Instalación, carga y ayuda</h2>
+<p>En R, los paquetes pueden instarlarse con la función <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/install.packages">install.packages()</a>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Instalación de ggplot2</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"ggplot2"</span><span class='op'>)</span>
+
+<span class='co'># Instalación de plotly</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"plotly"</span><span class='op'>)</span>
+
+<span class='co'># Instalación de dplyr</span>
+<span class='co'># (paquete para manipulación de datos de Tidyverse)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"dplyr"</span><span class='op'>)</span>
+
+<span class='co'># Opcionalmente, pueden instalarse todos los paquetes de Tidyverse</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"tidyverse"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Después de la instalación, los paquetes deben cargarse con la función <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/library">library()</a>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de graphics</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>graphics</span><span class='op'>)</span>
+
+<span class='co'># Carga de ggplot2</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+
+<span class='co'># Carga de plotly</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://plotly-r.com'>plotly</a></span><span class='op'>)</span>
+
+<span class='co'># Carga de dplyr</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+
+<span class='co'># Opcionalmente, puede cargarse toda la colección tidyverse</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Para obtener información sobre un paquete, puede utilizarse el parámetro <code>help</code> de <code>library()</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ayuda en línea sobre ggplot2</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span>help<span class='op'>=</span><span class='st'>"ggplot2"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="tipos-de-gráficos">Tipos de gráficos</h1>
+<h2 id="gráficos-de-dispersión">Gráficos de dispersión</h2>
+<p>Un <a href="https://www.data-to-viz.com/graph/scatter.html">diagrama o gráfico de dispersión (<em>scatter plot</em>)</a> muestra la relación entre dos variables numéricas. Para cada punto de datos, el valor de la primera variable se representa en el eje X y el de la segunda variable en el eje Y.</p>
+<p>La función <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot">plot()</a> del paquete graphics recibe como argumentos los vectores de las variables que se desean graficar. El siguiente ejemplo usa las variables de casos positivos y casos activos de Covid-19 en Costa Rica.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>cr_covid19</span><span class='op'>$</span><span class='va'>positivos</span>, <span class='va'>cr_covid19</span><span class='op'>$</span><span class='va'>activos</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02-r-graficacion_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<p>Para mejorar el gráfico, pueden utilizarse otras opciones de la función <code>plot()</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico con parámetros adicionales de plot()</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>
+  <span class='va'>cr_covid19</span><span class='op'>$</span><span class='va'>positivos</span>, 
+  <span class='va'>cr_covid19</span><span class='op'>$</span><span class='va'>activos</span>,
+  main<span class='op'>=</span><span class='st'>'Relación entre casos positivos y activos de COVID-19 en CR'</span>,
+  xlab<span class='op'>=</span><span class='st'>'Casos positivos'</span>,
+  ylab<span class='op'>=</span><span class='st'>'Casos activos'</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02-r-graficacion_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<p>Para incluir la incluir la columna con la fecha, esta debe convertirse primero a la clase <code>Date</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Conversión de la columna de fecha a la clase Date</span>
+<span class='va'>cr_covid19</span><span class='op'>$</span><span class='va'>FECHA</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>cr_covid19</span><span class='op'>$</span><span class='va'>FECHA</span>, <span class='st'>"%d/%m/%Y"</span><span class='op'>)</span>
+
+<span class='co'># Gráfico con fechas</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>
+  <span class='va'>cr_covid19</span><span class='op'>$</span><span class='va'>FECHA</span>, 
+  <span class='va'>cr_covid19</span><span class='op'>$</span><span class='va'>positivos</span>,
+  main<span class='op'>=</span><span class='st'>'Evolución en el tiempo de los casos positivos de COVID-19 en CR'</span>,
+  xlab<span class='op'>=</span><span class='st'>'Fecha'</span>,
+  ylab<span class='op'>=</span><span class='st'>'Casos positivos'</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02-r-graficacion_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<p>Con la función <a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a>, del paquete ggplot2, puede obtenerse un resultado similar:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Gráfico con fechas</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>cr_covid19</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>FECHA</span>, y <span class='op'>=</span> <span class='va'>positivos</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>'Evolución en el tiempo de los casos positivos de COVID-19 en CR'</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>'Fecha'</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>'Casos positivos'</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02-r-graficacion_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<p>La manera usual de usar <code>ggplot()</code> es con un data frame como argumento, especificando cuales columnas usar como valores de x e y. La primera parte, <code>ggplot()</code>, crea la base del gráfico (i.e. el canvas), mientras que <a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a> agrega una capa adicional, lo mismo que <a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle()</a> y las funciones restantes.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
