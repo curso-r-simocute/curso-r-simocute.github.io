@@ -8,5 +8,5 @@ navbar:
     - icon: fab fa-github
       href: "https://github.com/curso-r-simocute"  
     - icon: fab fa-youtube
-      href: "https://www.youtube.com/"        
+      href: "https://www.youtube.com/playlist?list=PL1gEgLSwAJeLUlXvyV5K_jvII9J1e4Z7u"        
 output: distill::distill_article
