@@ -1,0 +1,123 @@
+---
+title: "Exploración de datos en R"
+output: 
+  distill::distill_article:
+    toc: true
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Recursos de interés
+* Sitio sobre exploración visual de datos: [Visual Data Exploration - UC Business Analytics R Programming Guide](http://uc-r.github.io/gda).
+
+* Datos utilizados durante el curso: [Procesamiento de datos con R - datos](https://github.com/curso-r-simocute/datos).
+
+# Trabajo previo
+Se recomienda leer:  
+* [Visual Data Exploration - UC Business Analytics R Programming Guide](http://uc-r.github.io/gda).
+
+# Conjuntos de datos utilizados
+Los conjuntos de datos utilizado en los siguientes ejemplos y ejercicios pueden cargarse en data frames con la función [read.csv()](https://rdrr.io/r/utils/read.table.html) y visualizarse con la función [View()](https://rdrr.io/r/utils/View.html).
+
+# Paquetes utilizados
+```{r}
+# dplyr: paquete de Tidyverse para manipulación de datos
+library(dplyr)
+```
+
+**Puntos de muestreo de cobertura y uso de la tierra**  
+Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Puntos del [Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute)](https://simocute.go.cr/).
+
+```{r}
+# Carga de datos en un data frame desde un archivo CSV
+puntos_muestreo <- 
+  read.csv(
+    file='https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-coberturauso-tierra/pnt_csv.csv'
+  )
+```
+
+```{r eval=FALSE}
+# Despliegue de los datos
+View(puntos_muestreo)
+```
+
+# Exploración inicial
+## Visualización de conjuntos de datos en formato tabular
+Como primer paso, pueden observarse los datos en un formato tabular. Una manera sencilla de hacerlo es con la función [View()](https://rdrr.io/r/utils/View.html), la cual presenta un data frame en un formato similar al de una hoja de cálculo.
+
+```{r eval=FALSE}
+# Despliegue de un data frame en una tabla
+View(puntos_muestreo)
+```
+
+Para visualizar los datos en la consola de R (o RStudio), pueden utilizarse las funciones:  
+
+* [head()](https://rdrr.io/r/utils/head.html): despliega las n primeras observaciones de un data frame.  
+* [tail()](): despliega las últimas n observaciones de un data frame.  
+
+```{r eval=FALSE}
+# Ejemplos de uso de head(), tail()
+head(puntos_muestreo, n=10)
+tail(puntos_muestreo, n=10)
+```
+
+En el siguiente ejemplo, se utiliza ```head()``` en combinación con la función [sort()](https://rdrr.io/r/base/sort.html) para primero ordenar los valores del vector correspondiente a la columna  ```sample_id  ``` y posteriormente desplegar los n primeros.
+
+```{r}
+# Despliegue de los n primeros valores ordenados de la columna sample_id
+head(sort(puntos_muestreo$sample_id), n=10)
+```
+
+El mismo resultado puede obtenerse con las siguientes funciones de [Tidyverse](https://www.tidyverse.org/) contenidas en el paquete [dplyr](https://dplyr.tidyverse.org/):  
+
+* [select()](https://dplyr.tidyverse.org/reference/select.html): selecciona un subconjunto de columnas de un data frame.  
+* [arrange()](https://dplyr.tidyverse.org/reference/arrange.html): ordena los registros de un data frame.  
+* [slice_head()](https://dplyr.tidyverse.org/reference/slice.html): selecciona los n primeros registros de un data frame.  
+
+En el siguiente ejemplo, note el uso del operador [%>%](https://www.datacamp.com/community/tutorials/pipe-r-tutorial) (llamado *pipe*) para encadenar procesos y comunicar datos entre estos.
+
+```{r}
+# Despliegue de los n primeros valores ordenados de la columna sample_id, mediante funciones de dplyr (Tidyverse)
+puntos_muestreo %>%
+  select(sample_id) %>%
+  arrange(sample_id) %>%
+  slice_head(n=10)
+```
+
+**
+Ejercicio 01:  
+a. Con base en el ejemplo anterior, despliegue los 20 últimos valores ordenados de la columna ```sample_id```, mediante funciones de dplyr (Tidyverse).  
+b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones ```tail()``` y ```sort()```.
+**
+
+## Información resumida sobre un conjunto de datos
+Para visualizar solamente la lista de los nombres de las columnas de un data frame, puede usarse la función [names()](https://rdrr.io/r/base/names.html).
+
+```{r}
+# Despliegue de los nombres de columnas de un data frame
+names(puntos_muestreo)
+```
+
+La función [str()](https://rdrr.io/r/utils/str.html) (de *structure*) muestra también los nombres de las columnas, junto con el tipo de datos y una muestra de los datos en cada una.
+
+```{r}
+# Despliegue de la estructura de un data frame
+str(puntos_muestreo)
+```
+
+La función [summary()](https://rdrr.io/r/base/summary.html) despliega información resumida para cada una de las columnas de un data frame.
+
+```{r eval=FALSE}
+# Despliegue de información resumida sobre las columnas de un data frame
+summary(puntos_muestreo)
+```
+
+```summary()``` puede ser aplicada específicamente en una o varias columnas de un data frame.
+
+```{r}
+# Aplicación de summary() en columnas específicas de un data frame
+summary(puntos_muestreo$plot_id, puntos_muestreo$sample_id, puntos_muestreo$analysis_duration)
+```

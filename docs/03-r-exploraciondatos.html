@@ -86,29 +86,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Procesamiento de datos con R</title>
+  <title>Procesamiento de datos con R: Exploración de datos en R</title>
 
-  <meta property="description" itemprop="description" content="Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R.  Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute)."/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Procesamiento de datos con R"/>
+  <meta property="og:title" content="Procesamiento de datos con R: Exploración de datos en R"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R.  Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute)."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Procesamiento de datos con R"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Procesamiento de datos con R"/>
-  <meta property="twitter:description" content="Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R.  Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute)."/>
+  <meta property="twitter:title" content="Procesamiento de datos con R: Exploración de datos en R"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Procesamiento de datos con R"]},{"type":"character","attributes":{},"value":["Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R.  Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Exploración de datos en R"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2053,7 +2050,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Procesamiento de datos con R","description":"Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R.  Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).","authors":[]}
+{"title":"Exploración de datos en R","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2079,30 +2076,237 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Procesamiento de datos con R</h1>
+<h1>Exploración de datos en R</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación R. Es organizado por el Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute).</p></p>
+
 </div>
 
 
 <div class="d-article">
-<h1 id="bienvenida">Bienvenida</h1>
-<p>Este es un curso introductorio al procesamiento de datos mediante el lenguaje de programación <a href="https://www.r-project.org/">R</a>. Es organizado por el <a href="https://simocute.go.cr/">Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute)</a>.</p>
-<h1 id="equipo-necesario">Equipo necesario</h1>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
 <ul>
-<li>Una computadora en la que cuente con los privilegios necesarios para instalar software.</li>
-</ul>
-<h1 id="trabajo-previo-al-inicio-del-curso">Trabajo previo al inicio del curso</h1>
+<li><a href="#recursos-de-interés">Recursos de interés</a></li>
+<li><a href="#trabajo-previo">Trabajo previo</a></li>
+<li><a href="#conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</a></li>
+<li><a href="#paquetes-utilizados">Paquetes utilizados</a></li>
+<li><a href="#exploración-inicial">Exploración inicial</a>
 <ul>
-<li>Instale <a href="https://cloud.r-project.org/">R</a> y <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a> en su computadora. Puede aceptar las opciones que los programas instaladores le presentan por defecto. Si lo desea, puede ver los siguientes videos que muestran detalladamente el proceso de instalación en los sistemas operativos <a href="https://www.youtube.com/watch?v=k0oCZdJPsDU">Windows</a>, <a href="https://www.maximaformacion.es/blog-dat/instala-r-y-rstudio-en-mac-os/">macOS</a> y <a href="https://www.youtube.com/watch?v=3ni-jP2qEWg">Linux (Ubuntu)</a>.</li>
-<li>Instale el sistema para control de versiones <a href="https://git-scm.com/downloads">Git</a>.</li>
+<li><a href="#visualización-de-conjuntos-de-datos-en-formato-tabular">Visualización de conjuntos de datos en formato tabular</a></li>
+<li><a href="#información-resumida-sobre-un-conjunto-de-datos">Información resumida sobre un conjunto de datos</a></li>
+</ul></li>
 </ul>
-<h1 id="contenidos">Contenidos</h1>
-<p><a href="01-r-introduccion.html">01 Introducción a R</a><br />
-<a href="02-r-graficacion.html">02 Graficación en R</a><br />
-<a href="03-r-exploraciondatos.html">03 Exploración de datos en R</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+</nav>
+</div>
+<h1 id="recursos-de-interés">Recursos de interés</h1>
+<ul>
+<li><p>Sitio sobre exploración visual de datos: <a href="http://uc-r.github.io/gda">Visual Data Exploration - UC Business Analytics R Programming Guide</a>.</p></li>
+<li><p>Datos utilizados durante el curso: <a href="https://github.com/curso-r-simocute/datos">Procesamiento de datos con R - datos</a>.</p></li>
+</ul>
+<h1 id="trabajo-previo">Trabajo previo</h1>
+<p>Se recomienda leer:<br />
+* <a href="http://uc-r.github.io/gda">Visual Data Exploration - UC Business Analytics R Programming Guide</a>.</p>
+<h1 id="conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</h1>
+<p>Los conjuntos de datos utilizado en los siguientes ejemplos y ejercicios pueden cargarse en data frames con la función <a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a> y visualizarse con la función <a href="https://rdrr.io/r/utils/View.html">View()</a>.</p>
+<h1 id="paquetes-utilizados">Paquetes utilizados</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># dplyr: paquete de Tidyverse para manipulación de datos</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p><strong>Puntos de muestreo de cobertura y uso de la tierra</strong><br />
+Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Puntos del <a href="https://simocute.go.cr/">Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute)</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de datos en un data frame desde un archivo CSV</span>
+<span class='va'>puntos_muestreo</span> <span class='op'>&lt;-</span> 
+  <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
+    file<span class='op'>=</span><span class='st'>'https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-coberturauso-tierra/pnt_csv.csv'</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Despliegue de los datos</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="exploración-inicial">Exploración inicial</h1>
+<h2 id="visualización-de-conjuntos-de-datos-en-formato-tabular">Visualización de conjuntos de datos en formato tabular</h2>
+<p>Como primer paso, pueden observarse los datos en un formato tabular. Una manera sencilla de hacerlo es con la función <a href="https://rdrr.io/r/utils/View.html">View()</a>, la cual presenta un data frame en un formato similar al de una hoja de cálculo.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Despliegue de un data frame en una tabla</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Para visualizar los datos en la consola de R (o RStudio), pueden utilizarse las funciones:</p>
+<ul>
+<li><a href="https://rdrr.io/r/utils/head.html">head()</a>: despliega las n primeras observaciones de un data frame.<br />
+</li>
+<li><a href="">tail()</a>: despliega las últimas n observaciones de un data frame.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ejemplos de uso de head(), tail()</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span>, n<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span>, n<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>En el siguiente ejemplo, se utiliza <code>head()</code> en combinación con la función <a href="https://rdrr.io/r/base/sort.html">sort()</a> para primero ordenar los valores del vector correspondiente a la columna <code>sample_id</code> y posteriormente desplegar los n primeros.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Despliegue de los n primeros valores ordenados de la columna sample_id</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span><span class='op'>$</span><span class='va'>sample_id</span><span class='op'>)</span>, n<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] 526016793 526016794 526016795 526016796 526016797 526016798
+ [7] 526016799 526016800 526016801 526016802</code></pre>
+</div>
+<p>El mismo resultado puede obtenerse con las siguientes funciones de <a href="https://www.tidyverse.org/">Tidyverse</a> contenidas en el paquete <a href="https://dplyr.tidyverse.org/">dplyr</a>:</p>
+<ul>
+<li><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a>: selecciona un subconjunto de columnas de un data frame.<br />
+</li>
+<li><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a>: ordena los registros de un data frame.<br />
+</li>
+<li><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head()</a>: selecciona los n primeros registros de un data frame.</li>
+</ul>
+<p>En el siguiente ejemplo, note el uso del operador <a href="https://www.datacamp.com/community/tutorials/pipe-r-tutorial">%&gt;%</a> (llamado <em>pipe</em>) para encadenar procesos y comunicar datos entre estos.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Despliegue de los n primeros valores ordenados de la columna sample_id, mediante funciones de dplyr (Tidyverse)</span>
+<span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>sample_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>sample_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice_head</a></span><span class='op'>(</span>n<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>   sample_id
+1  526016793
+2  526016794
+3  526016795
+4  526016796
+5  526016797
+6  526016798
+7  526016799
+8  526016800
+9  526016801
+10 526016802</code></pre>
+</div>
+<p><strong> Ejercicio 01:<br />
+a. Con base en el ejemplo anterior, despliegue los 20 últimos valores ordenados de la columna <code>sample_id</code>, mediante funciones de dplyr (Tidyverse).<br />
+b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones <code>tail()</code> y <code>sort()</code>. </strong></p>
+<h2 id="información-resumida-sobre-un-conjunto-de-datos">Información resumida sobre un conjunto de datos</h2>
+<p>Para visualizar solamente la lista de los nombres de las columnas de un data frame, puede usarse la función <a href="https://rdrr.io/r/base/names.html">names()</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Despliegue de los nombres de columnas de un data frame</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;X&quot;                    &quot;plot_id&quot;             
+ [3] &quot;sample_id&quot;            &quot;lon&quot;                 
+ [5] &quot;lat&quot;                  &quot;flagged&quot;             
+ [7] &quot;analyses&quot;             &quot;email&quot;               
+ [9] &quot;collection_time&quot;      &quot;analysis_duration&quot;   
+[11] &quot;imagery_title&quot;        &quot;imagery_attributions&quot;
+[13] &quot;sample_geom&quot;          &quot;pl_plotid&quot;           
+[15] &quot;T1.COBERTURA&quot;         &quot;X1000.Veget.T1&quot;      
+[17] &quot;X2000.Sin.veg.T1&quot;     &quot;X3000.Agua.T1&quot;       
+[19] &quot;X4000.Nub.somb.T1&quot;    &quot;T1.USO&quot;              
+[21] &quot;X1000.MC.bos.T1&quot;      &quot;X2000.Agricul.T1&quot;    
+[23] &quot;X3000.Ganad.past.T1&quot;  &quot;X4000.Zon.hum.T1&quot;    
+[25] &quot;X5000.Infraest.T1&quot;    &quot;X6000.Otras.tier.T1&quot; 
+[27] &quot;X7000.No.clasif.T1&quot;   &quot;T2.COBERTURA&quot;        
+[29] &quot;X1000.Veget.T2&quot;       &quot;X2000.Sin.veget.T2&quot;  
+[31] &quot;X3000.Agua.T2&quot;        &quot;X4000.Nub.somb.T2&quot;   
+[33] &quot;T2.USO&quot;               &quot;X1000.MC.bos.T2&quot;     
+[35] &quot;X2000.Agricul.T2&quot;     &quot;X3000.Ganad.past.T2&quot; 
+[37] &quot;X4000.Zonas.humed.T2&quot; &quot;X5000.Infraest.T2&quot;   
+[39] &quot;X6000.Otras.tier.T2&quot;  &quot;X7000.No.clasif.T2&quot;  
+[41] &quot;Ob.T1.COB&quot;            &quot;Ob.T1.USO&quot;           
+[43] &quot;Ob.T2.COB&quot;            &quot;Ob.T2.USO&quot;           </code></pre>
+</div>
+<p>La función <a href="https://rdrr.io/r/utils/str.html">str()</a> (de <em>structure</em>) muestra también los nombres de las columnas, junto con el tipo de datos y una muestra de los datos en cada una.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Despliegue de la estructura de un data frame</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&#39;data.frame&#39;:   26125 obs. of  44 variables:
+ $ X                   : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ plot_id             : int  138528311 138528311 138528311 138528311 138528311 138528311 138528311 138528311 138528311 138528311 ...
+ $ sample_id           : int  526032918 526032919 526032920 526032921 526032922 526032923 526032924 526032925 526032926 526032927 ...
+ $ lon                 : num  -84.2 -84.2 -84.2 -84.2 -84.2 ...
+ $ lat                 : num  10.6 10.6 10.6 10.6 10.6 ...
+ $ flagged             : chr  &quot;false&quot; &quot;false&quot; &quot;false&quot; &quot;false&quot; ...
+ $ analyses            : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ email               : chr  &quot;moises.cruz@sinac.go.cr&quot; &quot;moises.cruz@sinac.go.cr&quot; &quot;moises.cruz@sinac.go.cr&quot; &quot;moises.cruz@sinac.go.cr&quot; ...
+ $ collection_time     : chr  &quot;44168,62778&quot; &quot;44168,62778&quot; &quot;44168,62778&quot; &quot;44168,62778&quot; ...
+ $ analysis_duration   : num  1147 1147 1147 1147 1147 ...
+ $ imagery_title       : chr  &quot;Planet NICFI Public&quot; &quot;Planet NICFI Public&quot; &quot;Planet NICFI Public&quot; &quot;Planet NICFI Public&quot; ...
+ $ imagery_attributions: logi  NA NA NA NA NA NA ...
+ $ sample_geom         : chr  &quot;POINT(-84.1666339410934 10.6368769527093)&quot; &quot;POINT(-84.1666339410934 10.6371884765137)&quot; &quot;POINT(-84.1666339410934 10.6375)&quot; &quot;POINT(-84.1666339410934 10.6378115231682)&quot; ...
+ $ pl_plotid           : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ T1.COBERTURA        : chr  &quot;T1C1000Vegetacion&quot; &quot;T1C1000Vegetacion&quot; &quot;T1C1000Vegetacion&quot; &quot;T1C1000Vegetacion&quot; ...
+ $ X1000.Veget.T1      : chr  &quot;T1C1100Arboles&quot; &quot;T1C1100Arboles&quot; &quot;T1C1100Arboles&quot; &quot;T1C1100Arboles&quot; ...
+ $ X2000.Sin.veg.T1    : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X3000.Agua.T1       : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X4000.Nub.somb.T1   : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ T1.USO              : chr  &quot;T1U1000MCbosques&quot; &quot;T1U1000MCbosques&quot; &quot;T1U1000MCbosques&quot; &quot;T1U1000MCbosques&quot; ...
+ $ X1000.MC.bos.T1     : chr  &quot;T1U1100BosqueMad&quot; &quot;T1U1100BosqueMad&quot; &quot;T1U1100BosqueMad&quot; &quot;T1U1100BosqueMad&quot; ...
+ $ X2000.Agricul.T1    : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X3000.Ganad.past.T1 : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X4000.Zon.hum.T1    : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X5000.Infraest.T1   : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X6000.Otras.tier.T1 : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X7000.No.clasif.T1  : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ T2.COBERTURA        : chr  &quot;T2C1000Vegetacion&quot; &quot;T2C1000Vegetacion&quot; &quot;T2C1000Vegetacion&quot; &quot;T2C1000Vegetacion&quot; ...
+ $ X1000.Veget.T2      : chr  &quot;T2C1100Arboles&quot; &quot;T2C1100Arboles&quot; &quot;T2C1100Arboles&quot; &quot;T2C1100Arboles&quot; ...
+ $ X2000.Sin.veget.T2  : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X3000.Agua.T2       : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X4000.Nub.somb.T2   : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ T2.USO              : chr  &quot;T2U1000MCbosques&quot; &quot;T2U1000MCbosques&quot; &quot;T2U1000MCbosques&quot; &quot;T2U1000MCbosques&quot; ...
+ $ X1000.MC.bos.T2     : chr  &quot;T2U1100BosqueMad&quot; &quot;T2U1100BosqueMad&quot; &quot;T2U1100BosqueMad&quot; &quot;T2U1100BosqueMad&quot; ...
+ $ X2000.Agricul.T2    : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X3000.Ganad.past.T2 : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X4000.Zonas.humed.T2: chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X5000.Infraest.T2   : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X6000.Otras.tier.T2 : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ X7000.No.clasif.T2  : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ Ob.T1.COB           : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ Ob.T1.USO           : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ Ob.T2.COB           : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+ $ Ob.T2.USO           : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...</code></pre>
+</div>
+<p>La función <a href="https://rdrr.io/r/base/summary.html">summary()</a> despliega información resumida para cada una de las columnas de un data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Despliegue de información resumida sobre las columnas de un data frame</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p><code>summary()</code> puede ser aplicada específicamente en una o varias columnas de un data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Aplicación de summary() en columnas específicas de un data frame</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span><span class='op'>$</span><span class='va'>plot_id</span>, <span class='va'>puntos_muestreo</span><span class='op'>$</span><span class='va'>sample_id</span>, <span class='va'>puntos_muestreo</span><span class='op'>$</span><span class='va'>analysis_duration</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+138527666 138527982 138528310 138528304 138528628 138528955 </code></pre>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
