@@ -11,13 +11,18 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Recursos de interés
+* Libro: [R for Data Science: Import, Tidy, Transform,Visualize, and Model Data. Wickham, H., & Grolemund, G. (2017)](https://r4ds.had.co.nz/).
+
+* Artículo: [Tidy Data. Wickham, H. (2014)](https://doi.org/10.18637/jss.v059.i10).
+
 * Sitio sobre exploración visual de datos: [Visual Data Exploration - UC Business Analytics R Programming Guide](http://uc-r.github.io/gda).
 
 * Datos utilizados durante el curso: [Procesamiento de datos con R - datos](https://github.com/curso-r-simocute/datos).
 
 # Trabajo previo
 Se recomienda leer:  
-* [Visual Data Exploration - UC Business Analytics R Programming Guide](http://uc-r.github.io/gda).
+* [Capítulos 5, 6 y 7 del libro  _R for Data Science: Import, Tidy, Transform,Visualize, and Model Data_. Wickham, H., & Grolemund, G. (2017)](https://r4ds.had.co.nz/).  
+* [Visual Data Exploration - UC Business Analytics R Programming Guide](http://uc-r.github.io/gda). 
 
 # Conjuntos de datos utilizados
 Los conjuntos de datos utilizado en los siguientes ejemplos y ejercicios pueden cargarse en data frames con la función [read.csv()](https://rdrr.io/r/utils/read.table.html) y visualizarse con la función [View()](https://rdrr.io/r/utils/View.html).
@@ -26,6 +31,9 @@ Los conjuntos de datos utilizado en los siguientes ejemplos y ejercicios pueden 
 ```{r}
 # dplyr: paquete de Tidyverse para manipulación de datos
 library(dplyr)
+
+# ggplot2: paquete de Tidyverse para graficación
+library(ggplot2)
 ```
 
 **Puntos de muestreo de cobertura y uso de la tierra**  
@@ -44,7 +52,7 @@ puntos_muestreo <-
 View(puntos_muestreo)
 ```
 
-# Exploración inicial
+# Pasos previos
 ## Visualización de conjuntos de datos en formato tabular
 Como primer paso, pueden observarse los datos en un formato tabular. Una manera sencilla de hacerlo es con la función [View()](https://rdrr.io/r/utils/View.html), la cual presenta un data frame en un formato similar al de una hoja de cálculo.
 
@@ -120,4 +128,44 @@ summary(puntos_muestreo)
 ```{r}
 # Aplicación de summary() en columnas específicas de un data frame
 summary(puntos_muestreo$plot_id, puntos_muestreo$sample_id, puntos_muestreo$analysis_duration)
+```
+
+# Análisis de datos exploratorio
+
+## Visualización de distribuciones
+La distribución de una variable muestra la cantidad de veces que ocurre cada uno de sus posibles valores. Las variables se dividen en categóricas y contínuas.
+
+### Variables categóricas
+Una variable es categórica si toma sus valores de un conjunto de datos limitado como, por ejemplo, un conjunto de hileras de caracteres correspondientes a algún tipo de clasificación.
+
+Para conocer la distribución de una variable categórica, puede empezarse contando la cantidad de veces que ocurre cada categoría mediante la función [dplyr::count()](https://dplyr.tidyverse.org/reference/count.html).
+
+```{r collapse=TRUE}
+# Distribución de la variable T1.USO
+puntos_muestreo %>% 
+  count(T1.USO) %>% 
+  arrange(desc(n))
+
+# Distribución de la variable T1.COBERTURA
+puntos_muestreo %>% 
+  count(T1.COBERTURA) %>% 
+  arrange(desc(n))
+```
+
+Estas distribuciones puede graficarse mediante gráficos de barras.
+
+```{r collapse=TRUE}
+# Distribución de la variable T1.USO
+ggplot(puntos_muestreo, aes(x=reorder(T1.USO, T1.USO, length))) +
+  xlab("T1.USO") + 
+  ylab("Cantidad de puntos") +   
+  geom_bar() +
+  coord_flip()
+
+# Distribución de la variable T1.COBERTURA
+ggplot(puntos_muestreo, aes(x=reorder(T1.COBERTURA, T1.COBERTURA, length))) +
+  xlab("T1.COBERTURA") + 
+  ylab("Cantidad de puntos") +   
+  geom_bar() +
+  coord_flip()
 ```

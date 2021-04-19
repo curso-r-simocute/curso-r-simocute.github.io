@@ -2092,21 +2092,31 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#trabajo-previo">Trabajo previo</a></li>
 <li><a href="#conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</a></li>
 <li><a href="#paquetes-utilizados">Paquetes utilizados</a></li>
-<li><a href="#exploración-inicial">Exploración inicial</a>
+<li><a href="#pasos-previos">Pasos previos</a>
 <ul>
 <li><a href="#visualización-de-conjuntos-de-datos-en-formato-tabular">Visualización de conjuntos de datos en formato tabular</a></li>
 <li><a href="#información-resumida-sobre-un-conjunto-de-datos">Información resumida sobre un conjunto de datos</a></li>
+</ul></li>
+<li><a href="#análisis-de-datos-exploratorio">Análisis de datos exploratorio</a>
+<ul>
+<li><a href="#visualización-de-distribuciones">Visualización de distribuciones</a>
+<ul>
+<li><a href="#variables-categóricas">Variables categóricas</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
 </div>
 <h1 id="recursos-de-interés">Recursos de interés</h1>
 <ul>
+<li><p>Libro: <a href="https://r4ds.had.co.nz/">R for Data Science: Import, Tidy, Transform,Visualize, and Model Data. Wickham, H., &amp; Grolemund, G. (2017)</a>.</p></li>
+<li><p>Artículo: <a href="https://doi.org/10.18637/jss.v059.i10">Tidy Data. Wickham, H. (2014)</a>.</p></li>
 <li><p>Sitio sobre exploración visual de datos: <a href="http://uc-r.github.io/gda">Visual Data Exploration - UC Business Analytics R Programming Guide</a>.</p></li>
 <li><p>Datos utilizados durante el curso: <a href="https://github.com/curso-r-simocute/datos">Procesamiento de datos con R - datos</a>.</p></li>
 </ul>
 <h1 id="trabajo-previo">Trabajo previo</h1>
 <p>Se recomienda leer:<br />
+* <a href="https://r4ds.had.co.nz/">Capítulos 5, 6 y 7 del libro <em>R for Data Science: Import, Tidy, Transform,Visualize, and Model Data</em>. Wickham, H., &amp; Grolemund, G. (2017)</a>.<br />
 * <a href="http://uc-r.github.io/gda">Visual Data Exploration - UC Business Analytics R Programming Guide</a>.</p>
 <h1 id="conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</h1>
 <p>Los conjuntos de datos utilizado en los siguientes ejemplos y ejercicios pueden cargarse en data frames con la función <a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a> y visualizarse con la función <a href="https://rdrr.io/r/utils/View.html">View()</a>.</p>
@@ -2115,6 +2125,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># dplyr: paquete de Tidyverse para manipulación de datos</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+
+<span class='co'># ggplot2: paquete de Tidyverse para graficación</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2137,7 +2150,7 @@ Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Pu
 </code></pre>
 </div>
 </div>
-<h1 id="exploración-inicial">Exploración inicial</h1>
+<h1 id="pasos-previos">Pasos previos</h1>
 <h2 id="visualización-de-conjuntos-de-datos-en-formato-tabular">Visualización de conjuntos de datos en formato tabular</h2>
 <p>Como primer paso, pueden observarse los datos en un formato tabular. Una manera sencilla de hacerlo es con la función <a href="https://rdrr.io/r/utils/View.html">View()</a>, la cual presenta un data frame en un formato similar al de una hoja de cálculo.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2306,7 +2319,70 @@ b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones <c
 <pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
 138527666 138527982 138528310 138528304 138528628 138528955 </code></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="análisis-de-datos-exploratorio">Análisis de datos exploratorio</h1>
+<h2 id="visualización-de-distribuciones">Visualización de distribuciones</h2>
+<p>La distribución de una variable muestra la cantidad de veces que ocurre cada uno de sus posibles valores. Las variables se dividen en categóricas y contínuas.</p>
+<h3 id="variables-categóricas">Variables categóricas</h3>
+<p>Una variable es categórica si toma sus valores de un conjunto de datos limitado como, por ejemplo, un conjunto de hileras de caracteres correspondientes a algún tipo de clasificación.</p>
+<p>Para conocer la distribución de una variable categórica, puede empezarse contando la cantidad de veces que ocurre cada categoría mediante la función <a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Distribución de la variable T1.USO</span>
+<span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>T1.USO</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>               T1.USO    n
+1    T1U1000MCbosques 9983
+2   T1U3000GanadYpast 7616
+3  T1U2000Agricultura 4393
+4                     1575
+5     T1U7000NoClasif 1488
+6     T1U5000Infraest  689
+7 T1U6000OtrasTierras  200
+8   T1U4000ZonasHumed  181</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r">
+<span class='co'># Distribución de la variable T1.COBERTURA</span>
+<span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>T1.COBERTURA</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>           T1.COBERTURA     n
+1     T1C1000Vegetacion 21500
+2                        1575
+3 T1C5000SinInformacion  1389
+4  T1C2000SinVegetacion  1274
+5  T1C4000NubesYsombras   233
+6           T1C3000Agua   154</code></pre>
+</div>
+<p>Estas distribuciones puede graficarse mediante gráficos de barras.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Distribución de la variable T1.USO</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>T1.USO</span>, <span class='va'>T1.USO</span>, <span class='va'>length</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"T1.USO"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"Cantidad de puntos"</span><span class='op'>)</span> <span class='op'>+</span>   
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-13-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r">
+<span class='co'># Distribución de la variable T1.COBERTURA</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>T1.COBERTURA</span>, <span class='va'>T1.COBERTURA</span>, <span class='va'>length</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"T1.COBERTURA"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"Cantidad de puntos"</span><span class='op'>)</span> <span class='op'>+</span>   
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-13-2.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
