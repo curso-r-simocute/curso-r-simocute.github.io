@@ -2092,7 +2092,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#trabajo-previo">Trabajo previo</a></li>
 <li><a href="#conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</a></li>
 <li><a href="#paquetes-utilizados">Paquetes utilizados</a></li>
-<li><a href="#pasos-previos">Pasos previos</a>
+<li><a href="#pasos-iniciales">Pasos iniciales</a>
 <ul>
 <li><a href="#visualización-de-conjuntos-de-datos-en-formato-tabular">Visualización de conjuntos de datos en formato tabular</a></li>
 <li><a href="#información-resumida-sobre-un-conjunto-de-datos">Información resumida sobre un conjunto de datos</a></li>
@@ -2120,17 +2120,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 * <a href="http://uc-r.github.io/gda">Visual Data Exploration - UC Business Analytics R Programming Guide</a>.</p>
 <h1 id="conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</h1>
 <p>Los conjuntos de datos utilizado en los siguientes ejemplos y ejercicios pueden cargarse en data frames con la función <a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a> y visualizarse con la función <a href="https://rdrr.io/r/utils/View.html">View()</a>.</p>
-<h1 id="paquetes-utilizados">Paquetes utilizados</h1>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># dplyr: paquete de Tidyverse para manipulación de datos</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-
-<span class='co'># ggplot2: paquete de Tidyverse para graficación</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
 <p><strong>Puntos de muestreo de cobertura y uso de la tierra</strong><br />
 Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Puntos del <a href="https://simocute.go.cr/">Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute)</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2150,7 +2139,18 @@ Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Pu
 </code></pre>
 </div>
 </div>
-<h1 id="pasos-previos">Pasos previos</h1>
+<h1 id="paquetes-utilizados">Paquetes utilizados</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># dplyr: paquete de Tidyverse para manipulación de datos</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+
+<span class='co'># ggplot2: paquete de Tidyverse para graficación</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="pasos-iniciales">Pasos iniciales</h1>
 <h2 id="visualización-de-conjuntos-de-datos-en-formato-tabular">Visualización de conjuntos de datos en formato tabular</h2>
 <p>Como primer paso, pueden observarse los datos en un formato tabular. Una manera sencilla de hacerlo es con la función <a href="https://rdrr.io/r/utils/View.html">View()</a>, la cual presenta un data frame en un formato similar al de una hoja de cálculo.</p>
 <div class="layout-chunk" data-layout="l-body">

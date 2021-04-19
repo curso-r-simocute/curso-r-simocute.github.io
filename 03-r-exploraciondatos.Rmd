@@ -27,15 +27,6 @@ Se recomienda leer:
 # Conjuntos de datos utilizados
 Los conjuntos de datos utilizado en los siguientes ejemplos y ejercicios pueden cargarse en data frames con la función [read.csv()](https://rdrr.io/r/utils/read.table.html) y visualizarse con la función [View()](https://rdrr.io/r/utils/View.html).
 
-# Paquetes utilizados
-```{r}
-# dplyr: paquete de Tidyverse para manipulación de datos
-library(dplyr)
-
-# ggplot2: paquete de Tidyverse para graficación
-library(ggplot2)
-```
-
 **Puntos de muestreo de cobertura y uso de la tierra**  
 Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Puntos del [Sistema de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (Simocute)](https://simocute.go.cr/).
 
@@ -52,7 +43,16 @@ puntos_muestreo <-
 View(puntos_muestreo)
 ```
 
-# Pasos previos
+# Paquetes utilizados
+```{r}
+# dplyr: paquete de Tidyverse para manipulación de datos
+library(dplyr)
+
+# ggplot2: paquete de Tidyverse para graficación
+library(ggplot2)
+```
+
+# Pasos iniciales
 ## Visualización de conjuntos de datos en formato tabular
 Como primer paso, pueden observarse los datos en un formato tabular. Una manera sencilla de hacerlo es con la función [View()](https://rdrr.io/r/utils/View.html), la cual presenta un data frame en un formato similar al de una hoja de cálculo.
 
