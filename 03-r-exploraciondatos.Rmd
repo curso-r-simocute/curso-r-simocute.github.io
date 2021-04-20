@@ -34,14 +34,9 @@ Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Pu
 
 ```{r}
 # Carga de datos en un data frame desde un archivo CSV
-#puntos_muestreo <- 
-#  read.csv(
-#    file='https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-cobertur#auso-tierra/pnt_csv.csv'
-#  )
-
 puntos_muestreo <- 
   read.csv(
-    file='C:/users/mfvargas/Downloads/pnt_csv.csv'
+    file='https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-coberturauso-tierra/pnt_csv.csv'
   )
 ```
 
@@ -109,6 +104,23 @@ b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones ``
 **
 
 ## Información resumida sobre un conjunto de datos
+Las dimensiones de un data frame pueden obtenerse con las funciones:
+
+- [nrow()](https://rdrr.io/r/base/nrow.html): cantidad de registros de un data frame.
+- [ncol()](https://rdrr.io/r/base/nrow.html): cantidad de columnas de un data frame.
+- [dim()](https://rdrr.io/r/base/dim.html): cantidad de registros y columnas de un data frame.
+
+```{r collapse=TRUE}
+# Cantidad de registros
+nrow(puntos_muestreo)
+
+# Cantidad de columnas
+ncol(puntos_muestreo)
+
+# Dimensiones del data frame
+dim(puntos_muestreo)
+```
+
 Para visualizar solamente la lista de los nombres de las columnas de un data frame, puede usarse la función [names()](https://rdrr.io/r/base/names.html).
 
 ```{r}
@@ -136,6 +148,8 @@ summary(puntos_muestreo)
 # Aplicación de summary() en columnas específicas de un data frame
 summary(puntos_muestreo$plot_id, puntos_muestreo$sample_id, puntos_muestreo$analysis_duration)
 ```
+
+
 
 # Funciones del paquete dplyr
 El paquete [dplyr](https://dplyr.tidyverse.org/) es descrito en [Tidyverse](https://dplyr.tidyverse.org/) como una *gramática para la manipulación de datos, la cual proporciona un conjunto consistente de verbos que ayuda a solucionar los retos de manipulación de datos más comunes*. Los "verbos" (i.e. funciones) de esta gramática son:
@@ -208,7 +222,7 @@ View(s1)
 ```
 
 ## mutation()
-```mutation()``` se utiliza para crear variabes en función de otras.
+```mutation()``` se utiliza para crear variables en función de otras.
 
 ```{r eval=FALSE}
 # Creación de una columna con la duración del análisis en minutos
@@ -237,6 +251,11 @@ puntos_muestreo %>%
   summarise(promedio_duracion_x_cobertura = mean(analysis_duration, na.rm = TRUE))
 ```
 
+**
+Ejercicio:  
+a. Utilice las funciones ```group_by()``` y [count()](https://dplyr.tidyverse.org/reference/count.html) para calcular la cantidad de puntos en cada parcela.
+**
+
 # Análisis exploratorio de datos
 
 ## Visualización de distribuciones
@@ -245,7 +264,7 @@ La distribución de una variable muestra la cantidad de veces que ocurre cada un
 ### Variables categóricas
 Una variable es categórica si toma sus valores de un conjunto de datos limitado como, por ejemplo, un conjunto de hileras de caracteres correspondientes a algún tipo de clasificación.
 
-Para conocer la distribución de una variable categórica, puede empezarse contando la cantidad de veces que ocurre cada categoría mediante la función [dplyr::count()](https://dplyr.tidyverse.org/reference/count.html).
+Para conocer la distribución de una variable categórica, puede empezarse contando la cantidad de veces que ocurre cada categoría mediante la función [count()](https://dplyr.tidyverse.org/reference/count.html).
 
 ```{r collapse=TRUE}
 # Distribución de la variable T1.COBERTURA
@@ -288,7 +307,7 @@ ggplot(data = puntos_muestreo) +
   geom_histogram(mapping = aes(x = analysis_duration), binwidth = 1000)
 ```
 
-La cantidad de observaciones en cada *bin* puede calcularse mediante [dplyr::count()](https://dplyr.tidyverse.org/reference/count.html) y [ggplot2::cut_width()](https://ggplot2.tidyverse.org/reference/cut_interval.html).
+La cantidad de observaciones en cada *bin* puede calcularse mediante [count()](https://dplyr.tidyverse.org/reference/count.html) y [cut_width()](https://ggplot2.tidyverse.org/reference/cut_interval.html).
 
 ```{r collapse=TRUE}
 # Distribución de la variable analysis_duration

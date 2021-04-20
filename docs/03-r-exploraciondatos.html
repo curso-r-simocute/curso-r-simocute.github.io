@@ -2136,14 +2136,9 @@ Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Pu
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de datos en un data frame desde un archivo CSV</span>
-<span class='co'>#puntos_muestreo &lt;- </span>
-<span class='co'>#  read.csv(</span>
-<span class='co'>#    file='https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-cobertur#auso-tierra/pnt_csv.csv'</span>
-<span class='co'>#  )</span>
-
 <span class='va'>puntos_muestreo</span> <span class='op'>&lt;-</span> 
   <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
-    file<span class='op'>=</span><span class='st'>'C:/users/mfvargas/Downloads/pnt_csv.csv'</span>
+    file<span class='op'>=</span><span class='st'>'https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-coberturauso-tierra/pnt_csv.csv'</span>
   <span class='op'>)</span>
 </code></pre>
 </div>
@@ -2234,6 +2229,34 @@ Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Pu
 a. Con base en el ejemplo anterior, despliegue los 20 últimos valores ordenados de la columna <code>sample_id</code>, mediante funciones de dplyr (Tidyverse).<br />
 b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones <code>tail()</code> y <code>sort()</code>. </strong></p>
 <h2 id="información-resumida-sobre-un-conjunto-de-datos">Información resumida sobre un conjunto de datos</h2>
+<p>Las dimensiones de un data frame pueden obtenerse con las funciones:</p>
+<ul>
+<li><a href="https://rdrr.io/r/base/nrow.html">nrow()</a>: cantidad de registros de un data frame.</li>
+<li><a href="https://rdrr.io/r/base/nrow.html">ncol()</a>: cantidad de columnas de un data frame.</li>
+<li><a href="https://rdrr.io/r/base/dim.html">dim()</a>: cantidad de registros y columnas de un data frame.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Cantidad de registros</span>
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 26125</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r">
+<span class='co'># Cantidad de columnas</span>
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 44</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r">
+<span class='co'># Dimensiones del data frame</span>
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 26125    44</code></pre>
+</div>
 <p>Para visualizar solamente la lista de los nombres de las columnas de un data frame, puede usarse la función <a href="https://rdrr.io/r/base/names.html">names()</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2400,7 +2423,7 @@ a. Filtre los puntos de muestreo con cobertura (T1.COBERTURA) de vegetación y o
 </div>
 </div>
 <h2 id="mutation">mutation()</h2>
-<p><code>mutation()</code> se utiliza para crear variabes en función de otras.</p>
+<p><code>mutation()</code> se utiliza para crear variables en función de otras.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Creación de una columna con la duración del análisis en minutos</span>
@@ -2442,12 +2465,14 @@ a. Filtre los puntos de muestreo con cobertura (T1.COBERTURA) de vegetación y o
 5 &quot;T1C4000NubesYsombras&quot;                           685.
 6 &quot;T1C5000SinInformacion&quot;                          529.</code></pre>
 </div>
+<p><strong> Ejercicio:<br />
+a. Utilice las funciones <code>group_by()</code> y <a href="https://dplyr.tidyverse.org/reference/count.html">count()</a> para calcular la cantidad de puntos en cada parcela. </strong></p>
 <h1 id="análisis-exploratorio-de-datos">Análisis exploratorio de datos</h1>
 <h2 id="visualización-de-distribuciones">Visualización de distribuciones</h2>
 <p>La distribución de una variable muestra la cantidad de veces que ocurre cada uno de sus posibles valores. Las variables se dividen en categóricas y contínuas.</p>
 <h3 id="variables-categóricas">Variables categóricas</h3>
 <p>Una variable es categórica si toma sus valores de un conjunto de datos limitado como, por ejemplo, un conjunto de hileras de caracteres correspondientes a algún tipo de clasificación.</p>
-<p>Para conocer la distribución de una variable categórica, puede empezarse contando la cantidad de veces que ocurre cada categoría mediante la función <a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a>.</p>
+<p>Para conocer la distribución de una variable categórica, puede empezarse contando la cantidad de veces que ocurre cada categoría mediante la función <a href="https://dplyr.tidyverse.org/reference/count.html">count()</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Distribución de la variable T1.COBERTURA</span>
@@ -2492,7 +2517,7 @@ a. Filtre los puntos de muestreo con cobertura (T1.COBERTURA) de vegetación y o
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-19-1.png" width="624" />
+<img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-20-1.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class='co'># Distribución de la variable T1.USO</span>
@@ -2503,7 +2528,7 @@ a. Filtre los puntos de muestreo con cobertura (T1.COBERTURA) de vegetación y o
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-19-2.png" width="624" /></p>
+<p><img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-20-2.png" width="624" /></p>
 </div>
 <h3 id="variables-continuas">Variables continuas</h3>
 <p>Una variable es continua si puede definirse en un conjunto infinito de valores ordenados. Intervalos de números y de tiempo son ejemplos de variables continuas.</p>
@@ -2515,9 +2540,9 @@ a. Filtre los puntos de muestreo con cobertura (T1.COBERTURA) de vegetación y o
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>analysis_duration</span><span class='op'>)</span>, binwidth <span class='op'>=</span> <span class='fl'>1000</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-20-1.png" width="624" /></p>
+<p><img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-21-1.png" width="624" /></p>
 </div>
-<p>La cantidad de observaciones en cada <em>bin</em> puede calcularse mediante <a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a> y <a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">ggplot2::cut_width()</a>.</p>
+<p>La cantidad de observaciones en cada <em>bin</em> puede calcularse mediante <a href="https://dplyr.tidyverse.org/reference/count.html">count()</a> y <a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width()</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Distribución de la variable analysis_duration</span>
@@ -2543,7 +2568,7 @@ a. Filtre los puntos de muestreo con cobertura (T1.COBERTURA) de vegetación y o
 15                (7.05e+04,7.15e+04]    25
 16                               &lt;NA&gt;  1575</code></pre>
 </div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
