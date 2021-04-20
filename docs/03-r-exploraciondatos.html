@@ -2097,11 +2097,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#visualización-de-conjuntos-de-datos-en-formato-tabular">Visualización de conjuntos de datos en formato tabular</a></li>
 <li><a href="#información-resumida-sobre-un-conjunto-de-datos">Información resumida sobre un conjunto de datos</a></li>
 </ul></li>
-<li><a href="#análisis-de-datos-exploratorio">Análisis de datos exploratorio</a>
+<li><a href="#funciones-del-paquete-dplyr">Funciones del paquete dplyr</a>
+<ul>
+<li><a href="#filter">filter()</a></li>
+<li><a href="#arrange">arrange()</a></li>
+<li><a href="#select">select()</a></li>
+<li><a href="#mutation">mutation()</a></li>
+<li><a href="#summarise">summarise()</a></li>
+</ul></li>
+<li><a href="#análisis-exploratorio-de-datos">Análisis exploratorio de datos</a>
 <ul>
 <li><a href="#visualización-de-distribuciones">Visualización de distribuciones</a>
 <ul>
 <li><a href="#variables-categóricas">Variables categóricas</a></li>
+<li><a href="#variables-continuas">Variables continuas</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -2115,9 +2124,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><p>Datos utilizados durante el curso: <a href="https://github.com/curso-r-simocute/datos">Procesamiento de datos con R - datos</a>.</p></li>
 </ul>
 <h1 id="trabajo-previo">Trabajo previo</h1>
-<p>Se recomienda leer:<br />
-* <a href="https://r4ds.had.co.nz/">Capítulos 5, 6 y 7 del libro <em>R for Data Science: Import, Tidy, Transform,Visualize, and Model Data</em>. Wickham, H., &amp; Grolemund, G. (2017)</a>.<br />
-* <a href="http://uc-r.github.io/gda">Visual Data Exploration - UC Business Analytics R Programming Guide</a>.</p>
+<p>Se recomienda leer:</p>
+<ul>
+<li><p><a href="https://r4ds.had.co.nz/">Capítulos 5, 6 y 7 del libro <em>R for Data Science: Import, Tidy, Transform,Visualize, and Model Data</em>. Wickham, H., &amp; Grolemund, G. (2017)</a>.</p></li>
+<li><p><a href="http://uc-r.github.io/gda">Visual Data Exploration - UC Business Analytics R Programming Guide</a>.</p></li>
+</ul>
 <h1 id="conjuntos-de-datos-utilizados">Conjuntos de datos utilizados</h1>
 <p>Los conjuntos de datos utilizado en los siguientes ejemplos y ejercicios pueden cargarse en data frames con la función <a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a> y visualizarse con la función <a href="https://rdrr.io/r/utils/View.html">View()</a>.</p>
 <p><strong>Puntos de muestreo de cobertura y uso de la tierra</strong><br />
@@ -2125,9 +2136,14 @@ Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Pu
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Carga de datos en un data frame desde un archivo CSV</span>
+<span class='co'>#puntos_muestreo &lt;- </span>
+<span class='co'>#  read.csv(</span>
+<span class='co'>#    file='https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-cobertur#auso-tierra/pnt_csv.csv'</span>
+<span class='co'>#  )</span>
+
 <span class='va'>puntos_muestreo</span> <span class='op'>&lt;-</span> 
   <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>
-    file<span class='op'>=</span><span class='st'>'https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-coberturauso-tierra/pnt_csv.csv'</span>
+    file<span class='op'>=</span><span class='st'>'C:/users/mfvargas/Downloads/pnt_csv.csv'</span>
   <span class='op'>)</span>
 </code></pre>
 </div>
@@ -2186,7 +2202,7 @@ Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Pu
 </div>
 <p>El mismo resultado puede obtenerse con las siguientes funciones de <a href="https://www.tidyverse.org/">Tidyverse</a> contenidas en el paquete <a href="https://dplyr.tidyverse.org/">dplyr</a>:</p>
 <ul>
-<li><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a>: selecciona un subconjunto de columnas de un data frame.<br />
+<li><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a>: selecciona un subconjunto de variables de un data frame.<br />
 </li>
 <li><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a>: ordena los registros de un data frame.<br />
 </li>
@@ -2214,7 +2230,7 @@ Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Pu
 9  526016801
 10 526016802</code></pre>
 </div>
-<p><strong> Ejercicio 01:<br />
+<p><strong> Ejercicio:<br />
 a. Con base en el ejemplo anterior, despliegue los 20 últimos valores ordenados de la columna <code>sample_id</code>, mediante funciones de dplyr (Tidyverse).<br />
 b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones <code>tail()</code> y <code>sort()</code>. </strong></p>
 <h2 id="información-resumida-sobre-un-conjunto-de-datos">Información resumida sobre un conjunto de datos</h2>
@@ -2319,7 +2335,114 @@ b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones <c
 <pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
 138527666 138527982 138528310 138528304 138528628 138528955 </code></pre>
 </div>
-<h1 id="análisis-de-datos-exploratorio">Análisis de datos exploratorio</h1>
+<h1 id="funciones-del-paquete-dplyr">Funciones del paquete dplyr</h1>
+<p>El paquete <a href="https://dplyr.tidyverse.org/">dplyr</a> es descrito en <a href="https://dplyr.tidyverse.org/">Tidyverse</a> como una <em>gramática para la manipulación de datos, la cual proporciona un conjunto consistente de verbos que ayuda a solucionar los retos de manipulación de datos más comunes</em>. Los “verbos” (i.e. funciones) de esta gramática son:</p>
+<ul>
+<li><p><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a>: selecciona observaciones con base en sus valores.</p></li>
+<li><p><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a>: cambia el orden de los registros.</p></li>
+<li><p><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a>: selecciona variables con base en sus nombres.</p></li>
+<li><p><a href="https://dplyr.tidyverse.org/reference/mutate.html">mulate()</a>: crea nuevas variables como funciones de variables existentes.</p></li>
+<li><p><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a>: agrupa y resume valores múltiples.</p></li>
+</ul>
+<p>Todas estas funciones trabajan de manera similar:</p>
+<ol type="1">
+<li>El primer argumento es un data frame. Puede omitirse si la función recibe un data frame a través del operador <em>pipe</em>.</li>
+<li>Los argumentos siguientes describen que hacer con el data frame, utilizando los nombres de las variables (sin comillas).<br />
+</li>
+<li>El resultado es un nuevo data frame.</li>
+</ol>
+<h2 id="filter">filter()</h2>
+<p><code>filter()</code> genera un subconjunto de observaciones con base en sus valores. El primer argumento es el nombre del data frame. Los argumentos subsiguientes son las expresiones lógicas que filtran el data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Filtro de los puntos de muestreo con base en los valores de la variable T1.USO</span>
+<span class='va'>f1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span>, <span class='va'>T1.USO</span> <span class='op'>==</span> <span class='st'>"T1U4000ZonasHumed"</span><span class='op'>)</span>
+
+<span class='co'># La siguiente forma usa el operador pipe y es equivalente a la anterior</span>
+<span class='va'>f2</span> <span class='op'>&lt;-</span> <span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>T1.USO</span> <span class='op'>==</span> <span class='st'>"T1U4000ZonasHumed"</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>f1</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>f2</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p><strong> Ejercicio:<br />
+a. Filtre los puntos de muestreo con cobertura (T1.COBERTURA) de vegetación y uso (T1.USO) de ganado y pastos. </strong></p>
+<h2 id="arrange">arrange()</h2>
+<p><code>arrange()</code> cambia el orden de las observaciones de un data frame. Como argumentos, recibe un data frame y un conjunto de nombres de columnas.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ordenamiento de los puntos de muestreo con base en la duración del análisis</span>
+<span class='va'>a1</span> <span class='op'>&lt;-</span> <span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>analysis_duration</span><span class='op'>)</span>
+
+<span class='co'># Ordenamiento en orden descendente</span>
+<span class='va'>a2</span> <span class='op'>&lt;-</span> <span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>analysis_duration</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>a1</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>a2</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p><strong> Ejercicio:<br />
+a. Filtre los puntos de muestreo con cobertura (T1.COBERTURA) de vegetación y ordénelos por la duración del análisis. Utilice <em>pipes</em> para encadenar las funciones. </strong></p>
+<h2 id="select">select()</h2>
+<p>La función <code>select()</code> selecciona un subconjunto de las variables de un data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Selección de variables en un data frame previamente filtrado y ordenado</span>
+<span class='va'>s1</span> <span class='op'>&lt;-</span> <span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>T1.USO</span> <span class='op'>==</span> <span class='st'>"T1U4000ZonasHumed"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>analysis_duration</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>plot_id</span>, <span class='va'>sample_id</span>, <span class='va'>T1.USO</span>, <span class='va'>analysis_duration</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>s1</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="mutation">mutation()</h2>
+<p><code>mutation()</code> se utiliza para crear variabes en función de otras.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Creación de una columna con la duración del análisis en minutos</span>
+<span class='va'>m1</span> <span class='op'>&lt;-</span> <span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>analysis_duration_min <span class='op'>=</span> <span class='va'>analysis_duration</span><span class='op'>/</span><span class='fl'>60</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>analysis_duration</span>, <span class='va'>analysis_duration_min</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>m1</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="summarise">summarise()</h2>
+<p><code>summarise()</code> agrupa y resume valores múltiples.</p>
+<p>En el siguiente ejemplo, agrupa todas las observaciones en un solo registro:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>promedio_duracion_analisis <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>analysis_duration</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  promedio_duracion_analisis
+1                   965.9127</code></pre>
+</div>
+<p>En combinación con <a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a>, la agrupación puede ser realizada con base en otras variables.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>T1.COBERTURA</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>promedio_duracion_x_cobertura <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>analysis_duration</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 6 x 2
+  T1.COBERTURA            promedio_duracion_x_cobertura
+  &lt;chr&gt;                                           &lt;dbl&gt;
+1 &quot;&quot;                                               NaN 
+2 &quot;T1C1000Vegetacion&quot;                              956.
+3 &quot;T1C2000SinVegetacion&quot;                          1684.
+4 &quot;T1C3000Agua&quot;                                    776.
+5 &quot;T1C4000NubesYsombras&quot;                           685.
+6 &quot;T1C5000SinInformacion&quot;                          529.</code></pre>
+</div>
+<h1 id="análisis-exploratorio-de-datos">Análisis exploratorio de datos</h1>
 <h2 id="visualización-de-distribuciones">Visualización de distribuciones</h2>
 <p>La distribución de una variable muestra la cantidad de veces que ocurre cada uno de sus posibles valores. Las variables se dividen en categóricas y contínuas.</p>
 <h3 id="variables-categóricas">Variables categóricas</h3>
@@ -2327,7 +2450,22 @@ b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones <c
 <p>Para conocer la distribución de una variable categórica, puede empezarse contando la cantidad de veces que ocurre cada categoría mediante la función <a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Distribución de la variable T1.USO</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Distribución de la variable T1.COBERTURA</span>
+<span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>T1.COBERTURA</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>           T1.COBERTURA     n
+1     T1C1000Vegetacion 21500
+2                        1575
+3 T1C5000SinInformacion  1389
+4  T1C2000SinVegetacion  1274
+5  T1C4000NubesYsombras   233
+6           T1C3000Agua   154</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r">
+<span class='co'># Distribución de la variable T1.USO</span>
 <span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>T1.USO</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span><span class='op'>)</span>
@@ -2342,37 +2480,11 @@ b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones <c
 6     T1U5000Infraest  689
 7 T1U6000OtrasTierras  200
 8   T1U4000ZonasHumed  181</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r">
-<span class='co'># Distribución de la variable T1.COBERTURA</span>
-<span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>T1.COBERTURA</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>           T1.COBERTURA     n
-1     T1C1000Vegetacion 21500
-2                        1575
-3 T1C5000SinInformacion  1389
-4  T1C2000SinVegetacion  1274
-5  T1C4000NubesYsombras   233
-6           T1C3000Agua   154</code></pre>
 </div>
 <p>Estas distribuciones puede graficarse mediante gráficos de barras.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Distribución de la variable T1.USO</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>T1.USO</span>, <span class='va'>T1.USO</span>, <span class='va'>length</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"T1.USO"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"Cantidad de puntos"</span><span class='op'>)</span> <span class='op'>+</span>   
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
-</code></pre>
-</div>
-<img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-13-1.png" width="624" />
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r">
-<span class='co'># Distribución de la variable T1.COBERTURA</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Distribución de la variable T1.COBERTURA</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>T1.COBERTURA</span>, <span class='va'>T1.COBERTURA</span>, <span class='va'>length</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"T1.COBERTURA"</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"Cantidad de puntos"</span><span class='op'>)</span> <span class='op'>+</span>   
@@ -2380,9 +2492,58 @@ b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones <c
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-13-2.png" width="624" /></p>
+<img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-19-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r">
+<span class='co'># Distribución de la variable T1.USO</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>puntos_muestreo</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>T1.USO</span>, <span class='va'>T1.USO</span>, <span class='va'>length</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>xlab</a></span><span class='op'>(</span><span class='st'>"T1.USO"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ylab</a></span><span class='op'>(</span><span class='st'>"Cantidad de puntos"</span><span class='op'>)</span> <span class='op'>+</span>   
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p><img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-19-2.png" width="624" /></p>
+</div>
+<h3 id="variables-continuas">Variables continuas</h3>
+<p>Una variable es continua si puede definirse en un conjunto infinito de valores ordenados. Intervalos de números y de tiempo son ejemplos de variables continuas.</p>
+<p>Para analizar la distribución de una variable continua, puede utilizarse un histograma.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Distribución de la variable analysis_duration</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>puntos_muestreo</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>analysis_duration</span><span class='op'>)</span>, binwidth <span class='op'>=</span> <span class='fl'>1000</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="03-r-exploraciondatos_files/figure-html5/unnamed-chunk-20-1.png" width="624" /></p>
+</div>
+<p>La cantidad de observaciones en cada <em>bin</em> puede calcularse mediante <a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a> y <a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">ggplot2::cut_width()</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Distribución de la variable analysis_duration</span>
+<span class='va'>puntos_muestreo</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/cut_interval.html'>cut_width</a></span><span class='op'>(</span><span class='va'>analysis_duration</span>, <span class='fl'>1000</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>   cut_width(analysis_duration, 1000)     n
+1                          [-500,500] 13900
+2                       (500,1.5e+03]  7575
+3                   (1.5e+03,2.5e+03]  1350
+4                   (2.5e+03,3.5e+03]   650
+5                   (3.5e+03,4.5e+03]   475
+6                   (4.5e+03,5.5e+03]   200
+7                   (5.5e+03,6.5e+03]   100
+8                   (6.5e+03,7.5e+03]   100
+9                   (7.5e+03,8.5e+03]    25
+10                  (8.5e+03,9.5e+03]    25
+11                (1.15e+04,1.25e+04]    25
+12                (1.35e+04,1.45e+04]    50
+13                (1.45e+04,1.55e+04]    25
+14                (6.95e+04,7.05e+04]    25
+15                (7.05e+04,7.15e+04]    25
+16                               &lt;NA&gt;  1575</code></pre>
+</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

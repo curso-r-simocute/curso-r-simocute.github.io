@@ -20,8 +20,10 @@ knitr::opts_chunk$set(echo = TRUE)
 * Datos utilizados durante el curso: [Procesamiento de datos con R - datos](https://github.com/curso-r-simocute/datos).
 
 # Trabajo previo
-Se recomienda leer:  
+Se recomienda leer: 
+
 * [Capítulos 5, 6 y 7 del libro  _R for Data Science: Import, Tidy, Transform,Visualize, and Model Data_. Wickham, H., & Grolemund, G. (2017)](https://r4ds.had.co.nz/).  
+
 * [Visual Data Exploration - UC Business Analytics R Programming Guide](http://uc-r.github.io/gda). 
 
 # Conjuntos de datos utilizados
@@ -32,9 +34,14 @@ Este conjunto de datos fue generado como parte del Ejercicio de Monitoreo por Pu
 
 ```{r}
 # Carga de datos en un data frame desde un archivo CSV
+#puntos_muestreo <- 
+#  read.csv(
+#    file='https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-cobertur#auso-tierra/pnt_csv.csv'
+#  )
+
 puntos_muestreo <- 
   read.csv(
-    file='https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-coberturauso-tierra/pnt_csv.csv'
+    file='C:/users/mfvargas/Downloads/pnt_csv.csv'
   )
 ```
 
@@ -81,7 +88,7 @@ head(sort(puntos_muestreo$sample_id), n=10)
 
 El mismo resultado puede obtenerse con las siguientes funciones de [Tidyverse](https://www.tidyverse.org/) contenidas en el paquete [dplyr](https://dplyr.tidyverse.org/):  
 
-* [select()](https://dplyr.tidyverse.org/reference/select.html): selecciona un subconjunto de columnas de un data frame.  
+* [select()](https://dplyr.tidyverse.org/reference/select.html): selecciona un subconjunto de variables de un data frame.  
 * [arrange()](https://dplyr.tidyverse.org/reference/arrange.html): ordena los registros de un data frame.  
 * [slice_head()](https://dplyr.tidyverse.org/reference/slice.html): selecciona los n primeros registros de un data frame.  
 
@@ -96,7 +103,7 @@ puntos_muestreo %>%
 ```
 
 **
-Ejercicio 01:  
+Ejercicio:  
 a. Con base en el ejemplo anterior, despliegue los 20 últimos valores ordenados de la columna ```sample_id```, mediante funciones de dplyr (Tidyverse).  
 b. Obtenga el mismo resultado del ejercicio a., pero utilizando las funciones ```tail()``` y ```sort()```.
 **
@@ -130,7 +137,107 @@ summary(puntos_muestreo)
 summary(puntos_muestreo$plot_id, puntos_muestreo$sample_id, puntos_muestreo$analysis_duration)
 ```
 
-# Análisis de datos exploratorio
+# Funciones del paquete dplyr
+El paquete [dplyr](https://dplyr.tidyverse.org/) es descrito en [Tidyverse](https://dplyr.tidyverse.org/) como una *gramática para la manipulación de datos, la cual proporciona un conjunto consistente de verbos que ayuda a solucionar los retos de manipulación de datos más comunes*. Los "verbos" (i.e. funciones) de esta gramática son:
+
+* [filter()](https://dplyr.tidyverse.org/reference/filter.html): selecciona observaciones con base en sus valores.
+
+* [arrange()](https://dplyr.tidyverse.org/reference/arrange.html): cambia el orden de los registros.
+
+* [select()](https://dplyr.tidyverse.org/reference/select.html): selecciona variables con base en sus nombres.
+
+* [mulate()](https://dplyr.tidyverse.org/reference/mutate.html): crea nuevas variables como funciones de variables existentes.
+
+* [summarise()](https://dplyr.tidyverse.org/reference/summarise.html): agrupa y resume valores múltiples.
+
+Todas estas funciones trabajan de manera similar:
+
+1. El primer argumento es un data frame. Puede omitirse si la función recibe un data frame a través del operador *pipe*.
+2. Los argumentos siguientes describen que hacer con el data frame, utilizando los nombres de las variables (sin comillas).  
+3. El resultado es un nuevo data frame.
+
+## filter()
+```filter()``` genera un subconjunto de observaciones con base en sus valores. El primer argumento es el nombre del data frame. Los argumentos subsiguientes son las expresiones lógicas que filtran el data frame. 
+
+```{r eval=FALSE}
+# Filtro de los puntos de muestreo con base en los valores de la variable T1.USO
+f1 <- filter(puntos_muestreo, T1.USO == "T1U4000ZonasHumed")
+
+# La siguiente forma usa el operador pipe y es equivalente a la anterior
+f2 <- puntos_muestreo %>% filter(T1.USO == "T1U4000ZonasHumed")
+
+View(f1)
+View(f2)
+```
+
+**
+Ejercicio:  
+a. Filtre los puntos de muestreo con cobertura (T1.COBERTURA) de vegetación y uso (T1.USO) de ganado y pastos.
+**
+
+## arrange()
+```arrange()``` cambia el orden de las observaciones de un data frame. Como argumentos, recibe un data frame y un conjunto de nombres de columnas. 
+
+```{r eval=FALSE}
+# Ordenamiento de los puntos de muestreo con base en la duración del análisis
+a1 <- puntos_muestreo %>% arrange(analysis_duration)
+
+# Ordenamiento en orden descendente
+a2 <- puntos_muestreo %>% arrange(desc(analysis_duration))
+
+View(a1)
+View(a2)
+```
+
+**
+Ejercicio:  
+a. Filtre los puntos de muestreo con cobertura (T1.COBERTURA) de vegetación y ordénelos por la duración del análisis. Utilice *pipes* para encadenar las funciones.
+**
+
+## select()
+La función ```select()``` selecciona un subconjunto de las variables de un data frame.
+
+```{r eval=FALSE}
+# Selección de variables en un data frame previamente filtrado y ordenado
+s1 <- puntos_muestreo %>% 
+  filter(T1.USO == "T1U4000ZonasHumed") %>% 
+  arrange(analysis_duration) %>%
+  select(plot_id, sample_id, T1.USO, analysis_duration)
+
+View(s1)
+```
+
+## mutation()
+```mutation()``` se utiliza para crear variabes en función de otras.
+
+```{r eval=FALSE}
+# Creación de una columna con la duración del análisis en minutos
+m1 <- puntos_muestreo %>% 
+  mutate(analysis_duration_min = analysis_duration/60) %>% 
+  select(analysis_duration, analysis_duration_min)
+
+View(m1)
+```
+
+## summarise()
+```summarise()``` agrupa y resume valores múltiples.
+
+En el siguiente ejemplo, agrupa todas las observaciones en un solo registro:
+
+```{r}
+puntos_muestreo %>% 
+  summarise(promedio_duracion_analisis = mean(analysis_duration, na.rm = TRUE))
+```
+
+En combinación con [group_by()](https://dplyr.tidyverse.org/reference/group_by.html), la agrupación puede ser realizada con base en otras variables.
+
+```{r}
+puntos_muestreo %>% 
+  group_by(T1.COBERTURA) %>%
+  summarise(promedio_duracion_x_cobertura = mean(analysis_duration, na.rm = TRUE))
+```
+
+# Análisis exploratorio de datos
 
 ## Visualización de distribuciones
 La distribución de una variable muestra la cantidad de veces que ocurre cada uno de sus posibles valores. Las variables se dividen en categóricas y contínuas.
@@ -141,31 +248,50 @@ Una variable es categórica si toma sus valores de un conjunto de datos limitado
 Para conocer la distribución de una variable categórica, puede empezarse contando la cantidad de veces que ocurre cada categoría mediante la función [dplyr::count()](https://dplyr.tidyverse.org/reference/count.html).
 
 ```{r collapse=TRUE}
-# Distribución de la variable T1.USO
-puntos_muestreo %>% 
-  count(T1.USO) %>% 
-  arrange(desc(n))
-
 # Distribución de la variable T1.COBERTURA
 puntos_muestreo %>% 
   count(T1.COBERTURA) %>% 
+  arrange(desc(n))
+
+# Distribución de la variable T1.USO
+puntos_muestreo %>% 
+  count(T1.USO) %>% 
   arrange(desc(n))
 ```
 
 Estas distribuciones puede graficarse mediante gráficos de barras.
 
 ```{r collapse=TRUE}
-# Distribución de la variable T1.USO
-ggplot(puntos_muestreo, aes(x=reorder(T1.USO, T1.USO, length))) +
-  xlab("T1.USO") + 
-  ylab("Cantidad de puntos") +   
-  geom_bar() +
-  coord_flip()
-
 # Distribución de la variable T1.COBERTURA
 ggplot(puntos_muestreo, aes(x=reorder(T1.COBERTURA, T1.COBERTURA, length))) +
   xlab("T1.COBERTURA") + 
   ylab("Cantidad de puntos") +   
   geom_bar() +
   coord_flip()
+
+# Distribución de la variable T1.USO
+ggplot(puntos_muestreo, aes(x=reorder(T1.USO, T1.USO, length))) +
+  xlab("T1.USO") + 
+  ylab("Cantidad de puntos") +   
+  geom_bar() +
+  coord_flip()
+```
+
+### Variables continuas
+Una variable es continua si puede definirse en un conjunto infinito de valores ordenados. Intervalos de números y de tiempo son ejemplos de variables continuas.
+
+Para analizar la distribución de una variable continua, puede utilizarse un histograma.
+
+```{r collapse=TRUE}
+# Distribución de la variable analysis_duration
+ggplot(data = puntos_muestreo) +
+  geom_histogram(mapping = aes(x = analysis_duration), binwidth = 1000)
+```
+
+La cantidad de observaciones en cada *bin* puede calcularse mediante [dplyr::count()](https://dplyr.tidyverse.org/reference/count.html) y [ggplot2::cut_width()](https://ggplot2.tidyverse.org/reference/cut_interval.html).
+
+```{r collapse=TRUE}
+# Distribución de la variable analysis_duration
+puntos_muestreo %>% 
+  count(cut_width(analysis_duration, 1000))
 ```
