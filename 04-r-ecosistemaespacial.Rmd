@@ -55,11 +55,6 @@ df_puntos_muestreo <-
   read.csv(
     file='https://raw.githubusercontent.com/curso-r-simocute/datos/main/puntosmuestreo-coberturauso-tierra/pnt_csv.csv'
   )
-
-#df_puntos_muestreo <- 
-#  read.csv(
-#    file='c:/users/mfvargas/Downloads/pnt_csv.csv'
-#  )
 ```
 
 ```{r eval=FALSE}
@@ -265,6 +260,7 @@ leaflet() %>%
     radius = 0.5,
     fillColor = 'orange',
     fillOpacity = 1,
+    group = "Puntos de muestreo",    
     popup = paste0(
       "T1.COBERTURA: ", sf_puntos_muestreo$T1.COBERTURA, 
       "<br>T2.COBERTURA: ", sf_puntos_muestreo$T2.COBERTURA, 
@@ -272,7 +268,8 @@ leaflet() %>%
       "<br>T2.USO: ", sf_puntos_muestreo$T2.USO)
   ) %>%
   addLayersControl(
-    baseGroups = c("OpenStreetMap", "Stamen Toner Lite", "Imágenes de ESRI")
+    baseGroups = c("OpenStreetMap", "Stamen Toner Lite", "Imágenes de ESRI"),
+    overlayGroups = c("Puntos de muestreo")    
   ) %>%
   addMiniMap(
     toggleDisplay = TRUE,
