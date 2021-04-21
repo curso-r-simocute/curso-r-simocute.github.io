@@ -30,3 +30,4 @@ Este es un curso introductorio al procesamiento de datos mediante el lenguaje de
 [01 Introducción a R](01-r-introduccion.html)  
 [02 Graficación en R](02-r-graficacion.html)  
 [03 Exploración de datos en R](03-r-exploraciondatos.html)  
+[04 El ecosistema espacial de R](04-r-ecosistemaespacial.html)  
